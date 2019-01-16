@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createClient } from '../../actions/';
-import ClientForm from './ClientForm';
+import ClientCreateForm from './ClientCreateForm';
 
 
 class ClientCreate extends Component {
@@ -14,7 +14,7 @@ class ClientCreate extends Component {
         return (
             <div>
                 <h3>Client Create</h3>
-                    <ClientForm onSubmit={this.onSubmit}/>
+                    <ClientCreateForm onSubmit={this.onSubmit}/>
             </div>
         );
     }

@@ -1,6 +1,18 @@
 import { CREATE_CLIENT } from '../actions/types'
-// Initial reducer add the industry form here and have it set to blank
-export default (state={}, action) => {
+
+// Maybe find the client id and just append it to it?
+
+// const INITIAL_STATE = {
+//     job_title: null,
+//     industry: null,
+//     location: null,
+//     filters: null,
+//     company_size: null,
+//     company_exclusion: null,
+//     message: null
+// }
+
+export default (state = {}, action) => {
     switch (action.type) {
         case CREATE_CLIENT:
             return {...state, [action.payload.id]: action.payload };
