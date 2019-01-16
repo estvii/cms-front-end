@@ -11,44 +11,40 @@ class ClientForm extends Component {
         const {error,touched} = formProps;
         if (touched && error) {
             return (
-                <div className="ui error message">
-                    {/* <div className=></div> */}
+                <div className="ui error mini message">
+                    <div>{error}</div>
                 </div>
             )
         }
     }
 
-    renderInput = (formProps) => {
+    renderTextField = (formProps) => {
         console.log(formProps);
-        const { input, label, meta } = formProps;
+        const { input, label, meta, type } = formProps;
         const className = `field ${meta.error && meta.touched ? 'error':''}`;
         return (
-            <div className={className}>
-                <label>{label}</label>
-                <input {...input} autoComplete="off" />
-                {this.renderError(meta)}
-            </div>
+                <div className={className}>
+                    <label>{label}</label>
+                    <input {...input} type={type} autoComplete="off" />
+                    {this.renderError(meta)}
+                </div>
         )
     }
 
     render() {
-        const { handleSubmit }= this.props
+        const { handleSubmit, pristine, submitting }= this.props
         // console.log(this.props);
         return(
             <div>
-                <form onSubmit={handleSubmit(this.onSubmit)}>
-                    <label>Name: </label>
-                    <Field name="name" component="input" label="enter name" placeholder="Name" autoComplete="off"/>
-                    
-                    <label>Email: </label>
-                    <Field name="email" component="input" label="enter email" placeholder="Email" autoComplete="off"/>
-                    
-                    <label>Password: </label>
-                    <Field name="password" component="input" label="enter password" placeholder="Password" autoComplete="off"/>
-
-                    <button className="ui primary button">Submit</button>
-
-                    <Field name="password" component={this.renderInput} label="enter password" placeholder="Password" autoComplete="off"/>
+                <form onSubmit={handleSubmit(this.onSubmit)}>      
+                    <Field name="name" component={this.renderTextField} label="Enter Name: " placeholder="Name" autoComplete="off"/>
+                    <br/>
+                    <Field name="email" component={this.renderTextField} label="Enter email: " placeholder="Email" autoComplete="off"/>
+                    <br/>
+                    <Field name="password" type="password" component={this.renderTextField} label="Enter password: " placeholder="Password" autoComplete="off" />
+                    <br />
+                    <br />
+                    <button className="ui primary button"type="submit" disabled={pristine || submitting}>Submit</button>
                 </form>
             </div>
         );
@@ -58,13 +54,15 @@ class ClientForm extends Component {
 const validate = (formValues) => {
     const errors = {};
     if(!formValues.name) {
-        errors.name = "You must enter a name";
+        errors.name = "Required";
     }
     if(!formValues.email) {
-        errors.email = "You must enter a valid email";
+        errors.email = "Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)) {
+        errors.email = 'Invalid email address'
     }
     if(!formValues.password) {
-        errors.password = "You must enter a password"
+        errors.password = "Required"
     }
     return errors;
 }
