@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
 
 import ClientCreate from './client/ClientCreate';
 import ClientFilter from './client/ClientFilter';
@@ -8,6 +9,7 @@ import ClientList from './client/ClientList';
 const App = () => {
     return(
         <div className="ui container">
+            <Navbar />
             <BrowserRouter>
                 <Switch>
                     <Route path='/' exact component={ClientList}/>
