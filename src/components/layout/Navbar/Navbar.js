@@ -7,7 +7,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Person from "@material-ui/icons/Person";
-import Navbarstyles from "./../../assets/css/Navbar";
+import Navbarstyles from "./../../../assets/styles/Navbar/Navbar";
 
 class Navbar extends React.Component {
   state = {
