@@ -1,6 +1,7 @@
 import backEnd from '../apis/backEnd';
 import { CREATE_CLIENT } from './types';
 import { FETCH_CLIENT_LIST } from './types';
+import { SELECT_CLIENT } from './types';
 
 const CLIENT_STATUS = {
     verification_status: 'off',
@@ -28,4 +29,13 @@ export const fetchClientList = () => {
         // console.log(response);
         dispatch({type: FETCH_CLIENT_LIST, payload: response.data})
     }
+}
+
+export const selectClient = (selectedClient) => {
+    console.log('selected Client Action called');
+    console.log(selectedClient);
+    return {
+        type: SELECT_CLIENT,
+        payload: selectedClient
+    };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchClientList } from '../../actions/';
-import { Link } from 'react-redux'
+import { fetchClientList, selectClient } from '../../actions/';
+// import { Link } from 'react-redux'
 
 class ClientList extends Component {
 
@@ -10,27 +10,31 @@ class ClientList extends Component {
         // console.log(this.props.fetchClientList());
     }
 
+
+
     renderList() {
-        console.log(this.props.clientList);
+        // console.log(this.props.clientList);
         return this.props.clientList.map( client => {
             return (
                 <div className="item" key={client.id}>
-                    {client.name} | 
-                    {client.verification_status} | 
-                    {client.account_status} | 
-                    {client.server_status} 
+                    <button onClick={()=>this.props.selectClient(client.name)}>{client.name}</button>
+                    <p>{client.verification_status}</p>
+                    <p>{client.account_status}</p>
+                    <p>{client.server_status}</p>
                 </div>
-                
+
             );
         });
     }
 
 
     render() {
-        // console.log(this.props);
+        console.log(this.props.selectedClient);
         // console.log(this.props.clientList);
         return(
             <div>
+                <div>Currently Selected: {this.props.selectedClient}</div>
+
                 <div>ClientList</div>
                 <div className="ui celled list">
                         {this.renderList()}
@@ -42,8 +46,9 @@ class ClientList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        clientList: Object.values(state.clients)
+        clientList: Object.values(state.clients),
+        selectedClient: state.selectedClient
     }
 }
 
-export default connect(mapStateToProps, { fetchClientList })(ClientList);
+export default connect(mapStateToProps, { fetchClientList, selectClient })(ClientList);
