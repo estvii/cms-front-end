@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchClientList, selectClient } from '../../actions/';
 // import { Link } from 'react-redux'
+import "./../../assets/css/client/main.css";
 
 class ClientList extends Component {
 
@@ -32,7 +33,7 @@ class ClientList extends Component {
         console.log(this.props.selectedClient);
         // console.log(this.props.clientList);
         return(
-            <div>
+            <div className="body">
                 <div>Currently Selected: {this.props.selectedClient}</div>
 
                 <div>ClientList</div>
