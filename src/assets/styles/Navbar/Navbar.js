@@ -2,7 +2,7 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 
 const Navbarstyles = theme => ({
   root: {
-    width: "100%"
+    marginLeft: "240px"
   },
   grow: {
     flexGrow: 1
