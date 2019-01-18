@@ -18,7 +18,7 @@ class ClientList extends Component {
         return this.props.clientList.map( client => {
             return (
                 <div className="item" key={client.id}>
-                    <button onClick={()=>this.props.selectClient(client.name)}>{client.name}</button>
+                    <button onClick={()=>this.props.selectClient(client)}>{client.name}</button>
                     <p>{client.verification_status}</p>
                     <p>{client.account_status}</p>
                     <p>{client.server_status}</p>
@@ -34,7 +34,7 @@ class ClientList extends Component {
         // console.log(this.props.clientList);
         return(
             <div className="body">
-                <div>Currently Selected: {this.props.selectedClient}</div>
+                <div>Currently Selected: {this.props.selectedClient.name}</div>
 
                 <div>ClientList</div>
                 <div className="ui celled list">
