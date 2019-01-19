@@ -1,17 +1,39 @@
+import _ from 'lodash';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Field, redux} from 'redux-form';
+import { Field, reduxForm} from 'redux-form';
+import { toggleClientStatus } from '../../actions';
+import Switch from 'react-switch';
+
+import ClientStatusAccountToggle from './ClientStatusAccountToggle';
+
+// toggle requires boolean, get its current values from the reducers and set the class componenet state to 
+// its value, when we toggle it the state will change on the class component. Only
+//when we submit it will the reducers actually get updated
 
 class ClientStatus extends Component {
+
+    onSubmit = (formValues) => {
+        // Call edit/update action
+    }
+
+    onToggle = (status_name,status) => {
+        // Call action to update the values
+        this.props.toggleClientStatus(status_name,status)
+    }
+
+    handleChange = (checked) => {
+        this.setState({ checked })
+    }
+
     render() {
-        const {name, account_status, verification_status, server_status} = this.props.selectedClient
+        if (_.isEmpty(this.props.selectedClient)) {
+            return <div>Please select Client</div>
+        }
+
         return (
             <div>
-                <h2>Client Name: {name}</h2>
-                <h2>Account Status: {account_status}</h2>
-                <h2>Verification Status: {verification_status}</h2>
-                <h2>Server Status: {server_status}</h2>
-                
+                <ClientStatusAccountToggle/>
             </div>
         );
     }
@@ -23,4 +45,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(ClientStatus);
+export default connect(mapStateToProps, {toggleClientStatus})(ClientStatus);

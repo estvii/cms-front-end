@@ -30,7 +30,7 @@ class ClientList extends Component {
 
 
     render() {
-        console.log(this.props.selectedClient);
+        // console.log(this.props.selectedClient);
         // console.log(this.props.clientList);
         return(
             <div className="body">
