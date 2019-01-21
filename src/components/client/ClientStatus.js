@@ -6,9 +6,6 @@ import { toggleClientStatus } from '../../actions';
 
 import ClientStatusToggle from './ClientStatusToggle';
 
-// toggle requires boolean, get its current values from the reducers and set the class componenet state to 
-// its value, when we toggle it the state will change on the class component. Only
-//when we submit it will the reducers actually get updated
 
 class ClientStatus extends Component {
 
@@ -23,7 +20,7 @@ class ClientStatus extends Component {
 
     render() {
         if (_.isEmpty(this.props.selectedClient)) {
-            return <div>Please Select Client Status</div>
+            return <div>Please Select Client</div>
         }
         const client = this.retrieveClient();
         return (
@@ -31,6 +28,15 @@ class ClientStatus extends Component {
                 <h2>Client Name: {client.name}</h2>
                 <ClientStatusToggle status_type="account_status"/>
                 <ClientStatusToggle status_type="server_status"/>
+                <h2>Client Info: </h2>
+                <div>
+                    Client Name: {client.name}
+                    <br/>
+                    Email: {client.email}                    
+                    <br/>
+                    Password: {client.password}
+                    <br/>
+                </div>
             </div>
         );
     }
