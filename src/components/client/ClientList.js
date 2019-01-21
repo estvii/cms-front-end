@@ -21,16 +21,26 @@ class ClientList extends Component {
             }       
     }
 
+    renderServerStatus(clientServerStatus) {
+        if (clientServerStatus) {
+            return <div>ON</div>
+        } else if (!clientServerStatus) {
+            return <div>OFF</div>
+        } else {
+            return <div>ERROR</div>
+        }       
+}
+
     renderList() {
         // console.log(this.props.clientList);
         return this.props.clientList.map( client => {
             return (
                 <div className="item" key={client.id}>
                     <button onClick={()=>this.props.selectClient(client)}>{client.name}</button> 
-                    {/* changed client to client.id */}
-                    <p>{client.verification_status}</p>
-                    {this.renderAccountStatus(client.account_status)}
-                    <p>{client.server_status}</p>
+                    <br/>
+                    Account Status: {this.renderAccountStatus(client.account_status)}
+                    Server Status: {this.renderServerStatus(client.server_status)}
+                    <p>Verification Status: {client.verification_status}</p>
                 </div>
 
             );
@@ -45,8 +55,6 @@ class ClientList extends Component {
         // console.log(this.props.clientList);
         return(
             <div className="body">
-                <div>Currently Selected: {this.props.selectedClient.name}</div>
-
                 <div>ClientList</div>
                 <div className="ui celled list">
                         {this.renderList()}

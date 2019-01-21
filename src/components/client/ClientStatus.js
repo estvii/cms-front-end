@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 // import { Field, reduxForm} from 'redux-form';
 import { toggleClientStatus } from '../../actions';
 
-import ClientStatusAccountToggle from './ClientStatusAccountToggle';
+import ClientStatusToggle from './ClientStatusToggle';
 
 // toggle requires boolean, get its current values from the reducers and set the class componenet state to 
 // its value, when we toggle it the state will change on the class component. Only
@@ -16,23 +16,21 @@ class ClientStatus extends Component {
         // Call edit/update action
     }
 
-    onToggle = (status_name,status) => {
-        // Call action to update the values
-        this.props.toggleClientStatus(status_name,status)
-    }
-
-    handleChange = (checked) => {
-        this.setState({ checked })
+    retrieveClient() {
+        const { id } = this.props.selectedClient
+        return _.find(this.props.clientList, {id})
     }
 
     render() {
         if (_.isEmpty(this.props.selectedClient)) {
             return <div>Please Select Client Status</div>
         }
+        const client = this.retrieveClient();
         return (
             <div>
-                <ClientStatusAccountToggle/>
-                
+                <h2>Client Name: {client.name}</h2>
+                <ClientStatusToggle status_type="account_status"/>
+                <ClientStatusToggle status_type="server_status"/>
             </div>
         );
     }
@@ -40,7 +38,8 @@ class ClientStatus extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        selectedClient: state.selectedClient
+        selectedClient: state.selectedClient,
+        clientList: Object.values(state.clients)
     }
 }
 

@@ -26,7 +26,7 @@ export default (state = {}, action) => {
         // case FETCH_CLIENT:
         //     return {...state, [action.payload.id]: action.payload };
         case TOG_CLIENT_STATUS:
-            console.log('toggle client reducer called')
+            // console.log('toggle client reducer called')
             return {...state, [action.payload.id]: action.payload}
         default:
             return state;
