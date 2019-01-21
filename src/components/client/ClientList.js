@@ -11,22 +11,33 @@ class ClientList extends Component {
         // console.log(this.props.fetchClientList());
     }
 
-
+    renderAccountStatus(clientAccountStatus) {
+            if (clientAccountStatus) {
+                return <div>ON</div>
+            } else if (!clientAccountStatus) {
+                return <div>OFF</div>
+            } else {
+                return <div>ERROR</div>
+            }       
+    }
 
     renderList() {
         // console.log(this.props.clientList);
         return this.props.clientList.map( client => {
             return (
                 <div className="item" key={client.id}>
-                    <button onClick={()=>this.props.selectClient(client)}>{client.name}</button>
+                    <button onClick={()=>this.props.selectClient(client)}>{client.name}</button> 
+                    {/* changed client to client.id */}
                     <p>{client.verification_status}</p>
-                    <p>{client.account_status}</p>
+                    {this.renderAccountStatus(client.account_status)}
                     <p>{client.server_status}</p>
                 </div>
 
             );
         });
     }
+
+    
 
 
     render() {

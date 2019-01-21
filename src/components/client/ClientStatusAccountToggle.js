@@ -9,20 +9,27 @@ class ClientStatusAccountToggle extends Component {
 
     state = {checked: false}
     
+    retrieveClient() {
+        const { id } = this.props.selectedClient
+        return _.find(this.props.clientList, {id})
+    }
+
     componentDidMount(){
-        const {account_status} = this.props.selectedClient
+        // console.log('account status mounted');
+        const client = this.retrieveClient();
+
+        const {account_status} = client;
         this.setState({checked: account_status})
     }
 
     componentDidUpdate(prevProps){
-        const {account_status} = this.props.selectedClient
+        // console.log('account status component update');
+        const client = this.retrieveClient();
+
+        const {account_status} = client
         if (this.props.selectedClient.id !== prevProps.selectedClient.id) {
             this.setState({checked: account_status})
         }
-    }
-
-    onSubmit = (formValues) => {
-        // Call edit/update action
     }
 
     onToggle = (status_name,status) => {
@@ -30,19 +37,18 @@ class ClientStatusAccountToggle extends Component {
         this.props.toggleClientStatus(status_name,status)
     }
 
-    renderToggleButton = (status_name, status) => {
-    }
-
     handleChange = (checked) => {
+        const { id } = this.props.selectedClient
         this.setState({ checked })
+        this.props.toggleClientStatus('account_status',checked, id)
     }
 
     render() {
-        if (_.isEmpty(this.props.selectedClient)) {
-            return <div>Please select Client</div>
+        const client = this.retrieveClient();
+        if (_.isEmpty(client)) {
+            return <div>Please select Client (ACcount Toggle)</div>
         }
-        console.log(this.state.checked);
-        const {name} = this.props.selectedClient
+        const {name} = client;
         return (
             <div>
                 <h2>Client Name: {name}</h2>
@@ -57,7 +63,8 @@ class ClientStatusAccountToggle extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        selectedClient: state.selectedClient
+        selectedClient: state.selectedClient,
+        clientList: Object.values(state.clients)
     }
 }
 

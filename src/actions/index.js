@@ -1,6 +1,7 @@
 import backEnd from '../apis/backEnd';
 import { CREATE_CLIENT } from './types';
 import { FETCH_CLIENT_LIST } from './types';
+// import { FETCH_CLIENT } from './types'
 import { SELECT_CLIENT } from './types';
 import { TOG_CLIENT_STATUS } from './types';
 
@@ -28,9 +29,17 @@ export const fetchClientList = () => {
     return async (dispatch) => {
         const response = await backEnd.get('/clients');
         // console.log(response);
-        dispatch({type: FETCH_CLIENT_LIST, payload: response.data})
+        dispatch({type: FETCH_CLIENT_LIST, payload: response.data});
     }
 }
+
+// export const fetchClient = (id) => {
+//     return async (dispatch) => {
+//         const response = await backEnd.get(`/clients/${id}`)
+//         // console.log(response);
+//         dispatch({type: FETCH_CLIENT, payload: response.data });
+//     }
+// }
 
 export const selectClient = (selectedClient) => {
     // console.log('selected Client Action called');
@@ -41,16 +50,14 @@ export const selectClient = (selectedClient) => {
     };
 }
 // FIX ACTION 
-export const toggleClientStatus = (status_name,status) => {
-        console.log('Toggle Action Called');
+export const toggleClientStatus = (status_name,status,id) => {
+        // console.log('Toggle Action Called');
         // console.log(status_name);
         // console.log(status);
+        // console.log(id);
     return async (dispatch) => {
-        const response = await backEnd.patch('/clients', {[status_name]: status});
+        const response = await backEnd.patch(`/clients/${id}`, {[status_name]: status});
         console.log(response);
-        return {
-            type: TOG_CLIENT_STATUS,
-            payload: response.data
-        }   
+        dispatch({type: TOG_CLIENT_STATUS, payload: response.data});
     }
 }
