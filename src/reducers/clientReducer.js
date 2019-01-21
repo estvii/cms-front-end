@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import { CREATE_CLIENT } from '../actions/types'
 import { FETCH_CLIENT_LIST } from '../actions/types'
+// import { FETCH_CLIENT } from '../actions/types'
+import { TOG_CLIENT_STATUS } from '../actions/types'
 
 
 // Maybe find the client id and just append it to it?
@@ -21,6 +23,11 @@ export default (state = {}, action) => {
             return {...state, [action.payload.id]: action.payload };
         case FETCH_CLIENT_LIST:
             return {...state, ..._.mapKeys(action.payload, "id")};
+        // case FETCH_CLIENT:
+        //     return {...state, [action.payload.id]: action.payload };
+        case TOG_CLIENT_STATUS:
+            // console.log('toggle client reducer called')
+            return {...state, [action.payload.id]: action.payload}
         default:
             return state;
     }   

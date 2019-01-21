@@ -1,24 +1,32 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import NavBar from "./layout/NavBar"
 import ClientCreate from "./client/ClientCreate";
 import ClientFilter from "./client/ClientFilter";
-import ClientList from "./client/ClientList";
-import NavBar from "./layout/NavBar";
+import ClientList from './client/ClientList';
+import ClientStatus from './client/ClientStatus';
 
 const App = () => {
   return (
     <div>
-      {/* <Sidebar />
-      <Navbar /> */}
       <NavBar />
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={ClientList} />
-          <Route path="/create" exact component={ClientCreate} />
-          <Route path="/client/filter/:id" exact component={ClientFilter} />
-        </Switch>
+        <div>
+          <div className="ui container grid">
+            <div className="ui row">
+              <div className="column ten wide">
+                <Route path='/' exact component={ClientList} />
+              </div>
+              <div className="column six wide">
+                <Route path='/' exact component={ClientStatus} />
+              </div>
+            </div>
+          </div>
+            <Route path="/create" exact component={ClientCreate} />
+            <Route path="/client/filter/:id" exact component={ClientFilter} />
+        </div>
       </BrowserRouter>
-    </div>
+      </div>
   );
 };
 
