@@ -10,14 +10,13 @@ const App = () => {
     <div>
       {/* <Sidebar />
       <Navbar /> */}
+      <NavBar />
       <BrowserRouter>
-        <NavBar>
-          <Switch>
-            <Route path="/" exact component={ClientList} />
-            <Route path="/create" exact component={ClientCreate} />
-            <Route path="/client/filter/:id" exact component={ClientFilter} />
-          </Switch>
-        </NavBar>
+        <Switch>
+          <Route path="/" exact component={ClientList} />
+          <Route path="/create" exact component={ClientCreate} />
+          <Route path="/client/filter/:id" exact component={ClientFilter} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
