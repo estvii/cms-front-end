@@ -1,4 +1,5 @@
 import backEnd from '../apis/backEnd';
+import history from '../history';
 import { CREATE_CLIENT } from './types';
 import { FETCH_CLIENT_LIST } from './types';
 // import { FETCH_CLIENT } from './types'
@@ -22,7 +23,7 @@ export const createClient = (formValues) => {
         const response = await backEnd.post('/clients', {...formValues, ...CLIENT_STATUS }); //needs user ID later and might need to getState ?
         // console.log(response);
         dispatch({type: CREATE_CLIENT, payload: response.data});
-        // Redirect to client filter form
+        history.push('/'); //Navigates user to root 
     }
 }
 

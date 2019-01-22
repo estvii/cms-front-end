@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import NavBar from "./layout/NavBar"
 import ClientCreate from "./client/ClientCreate";
 import ClientFilter from "./client/ClientFilter";
 import ClientList from './client/ClientList';
 import ClientStatus from './client/ClientStatus';
+import history from '../history';
 
 const App = () => {
   return (
     <div>
       <NavBar />
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <div className="ui container grid">
             <div className="ui row">
@@ -25,7 +26,7 @@ const App = () => {
             <Route path="/create" exact component={ClientCreate} />
             <Route path="/client/filter" exact component={ClientFilter} />
         </div>
-      </BrowserRouter>
+      </Router>
       </div>
   );
 };
