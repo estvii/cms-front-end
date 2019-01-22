@@ -19,7 +19,7 @@ class ClientForm extends Component {
     }
 
     renderTextField = (formProps) => {
-        console.log(formProps);
+        // console.log(formProps);
         const { input, label, meta, type } = formProps;
         const className = `field ${meta.error && meta.touched ? 'error':''}`;
         return (

@@ -23,7 +23,7 @@ const App = () => {
             </div>
           </div>
             <Route path="/create" exact component={ClientCreate} />
-            <Route path="/client/filter/:id" exact component={ClientFilter} />
+            <Route path="/client/filter" exact component={ClientFilter} />
         </div>
       </BrowserRouter>
       </div>
