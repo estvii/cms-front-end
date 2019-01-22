@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Field, reduxForm } from 'redux-form'
 
 // React Widgets
-import DropdownList from 'react-widgets/lib/DropdownList'
 import SelectList from 'react-widgets/lib/SelectList'
 import Multiselect from 'react-widgets/lib/Multiselect'
 import 'react-widgets/dist/css/react-widgets.css'
@@ -10,8 +9,8 @@ import 'react-widgets/dist/css/react-widgets.css'
 class ClientFilterForm extends Component {
 
 
-    onSubmit = (formValues) => {
-        this.props.onSubmit(formValues);
+    onSubmit = (filterFormValues) => {
+        this.props.onSubmit(filterFormValues);
         // Sends it to ClientFilter for it to send an action
     }
 
@@ -72,7 +71,7 @@ class ClientFilterForm extends Component {
 
     render() {
         console.log(this.props);
-        const { handleSubmit, pristine, submitting} = this.props;
+        const { handleSubmit } = this.props;
         return(
             <div>
                 <form onSubmit={handleSubmit(this.onSubmit)}>
