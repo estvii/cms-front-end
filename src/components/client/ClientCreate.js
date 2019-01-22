@@ -12,9 +12,11 @@ class ClientCreate extends Component {
 
   render() {
     return (
-      <div className="body">
-        <h3>Client Create</h3>
-        <ClientCreateForm onSubmit={this.onSubmit} />
+      <div>
+        <div className="body">
+          <h3>Client Create</h3>
+          <ClientCreateForm onSubmit={this.onSubmit} />
+        </div>
       </div>
     );
   }
