@@ -39,6 +39,15 @@ class ClientFilterForm extends Component {
         ]
     }
 
+    companySize() {
+        return [
+            '1-49',
+            '50-199',
+            '200',
+            'All'
+        ]
+    }
+
     renderMultiSelect = (selectValues) => {
         const {input, data, valueField, textField} = selectValues;
         return (
@@ -49,6 +58,15 @@ class ClientFilterForm extends Component {
             valueField = {valueField}
             textField = {textField}
             />
+        );
+    }
+
+    renderSelectList = (selectValues) => {
+        const { input, data } = selectValues;
+        return (
+            <SelectList {...input}
+            onBlur={() => input.onBlur()}
+            data={data} />
         );
     }
 
@@ -68,7 +86,7 @@ class ClientFilterForm extends Component {
                 <Field name="location" component={this.renderMultiSelect} data={this.locationList()} placeholder="location: " autoComplete="off"/>
                 <br/>
                 <label>Company Size:</label>
-                <Field name="company_size" component="input" label="company_size" placeholder="Company Size: " autoComplete="off"/>
+                <Field name="company_size" component={this.renderSelectList} data={this.companySize()} placeholder="Company Size: " autoComplete="off"/>
                 <br/>
                 <label>Company Exclusion:</label>
                 <Field name="company_exclusion" component={this.renderMultiSelect} data={this.companyExclusion()} placeholder="Company Exclusion: " autoComplete="off"/>
