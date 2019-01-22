@@ -28,10 +28,6 @@ const NavBarStyles = theme => ({
   drawerPaper: {
     width: drawerWidth
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3
-  },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
