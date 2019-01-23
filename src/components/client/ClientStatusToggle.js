@@ -22,10 +22,10 @@ class ClientStatusToggle extends Component {
 
         if (status_type === "account_status") {
             this.setState({checked: account_status});
-            console.log('here: account_status');
+            // console.log('here: account_status');
         } else if ( status_type === "server_status" ) {
             this.setState({checked: server_status})
-            console.log('here_server_status');
+            // console.log('here_server_status');
         }
     }
 
@@ -50,7 +50,7 @@ class ClientStatusToggle extends Component {
         const { id } = this.props.selectedClient
         const { status_type } = this.props
         this.setState({ checked })
-        console.log(status_type);
+        // console.log(status_type);
         this.props.toggleClientStatus(status_type,checked, id)
     }
 

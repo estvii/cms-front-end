@@ -25,7 +25,7 @@ const App = () => {
             </div>
           </div>
           <Route path="/create" exact component={ClientCreate} />
-          <Route path="/client/filter" exact component={ClientFilter} />
+          <Route path="/client/filter/" exact component={ClientFilter} />
           <Route path="/statistics" exact component={LargeCard} />
         </div>
       </Router>

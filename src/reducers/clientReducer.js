@@ -29,7 +29,10 @@ export default (state = {}, action) => {
             // console.log('toggle client reducer called')
             return {...state, [action.payload.id]: action.payload};
         case UPDATE_CLIENT_FILTER: 
-            return {...state, ...action.payload}
+            // console.log(action.payload);
+            return {...state, [action.payload.id]: action.payload};
+            // return {...state, ...action.payload}
+            
         default:
             return state;
     }   

@@ -63,13 +63,14 @@ export const toggleClientStatus = (status_name,status,id) => {
         dispatch({type: TOG_CLIENT_STATUS, payload: response.data});
     }
 }
-// FIXME: need to add an id from select client
-export const updateClientFilter = (filterFormValues) => {
-    // console.log('Filter Update Action called');
-    const id = 1;
+
+export const updateClientFilter = (filterFormValues, id) => {
+    console.log(filterFormValues);
+    console.log(id);
     return async(dispatch) => {
-        const response = await backEnd.patch(`clients/${id}`,filterFormValues)
-        console.log(response);
+        const response = await backEnd.patch(`clients/${id}`, filterFormValues)
+        // console.log(response);
         dispatch({type: UPDATE_CLIENT_FILTER, payload: response.data})
+        history.push('/');
     }
 }

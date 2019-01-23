@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // React Widgets
 import SelectList from 'react-widgets/lib/SelectList'
@@ -8,6 +10,9 @@ import 'react-widgets/dist/css/react-widgets.css'
 
 class ClientFilterForm extends Component {
 
+    state = {
+
+    };
 
     onSubmit = (filterFormValues) => {
         this.props.onSubmit(filterFormValues);
@@ -47,6 +52,17 @@ class ClientFilterForm extends Component {
         ]
     }
 
+    retrieveClient() {
+        const { id } = this.props.selectedClient
+        // console.log(`Retrieved id:${id}`)
+        return _.find(this.props.clientList, {id})
+    }
+
+    // componentDidMount() {
+    //     const client = this.retrieveClient();
+    //     console.log(client);
+    // }
+
     renderMultiSelect = (selectValues) => {
         const {input, data, valueField, textField} = selectValues;
         return (
@@ -70,13 +86,15 @@ class ClientFilterForm extends Component {
     }
 
     render() {
-        console.log(this.props);
+        const client = this.retrieveClient();
+        // console.log(client);
+        // console.log(this.props)
         const { handleSubmit } = this.props;
         return(
             <div>
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                 <label>Job Title </label>
-                <Field name="job_title" component="input" label="job_title" placeholder="Job Title: " autoComplete="off"/>
+                <Field name="job_title" component="input" label="job_title" placeholder="Job Title: " autoComplete="off" value='test'/>
                 <br/>
                 <label>Industry:</label>
                 <Field name="industry" component={this.renderMultiSelect} data={this.industryList()} placeholder="Industry: " autoComplete="off"/>
@@ -100,6 +118,12 @@ class ClientFilterForm extends Component {
     }
 }
 
-export default reduxForm({
-    form: 'ClientFilterForm'
-})(ClientFilterForm);
+const mapStateToProps = (state) => {
+    return {
+        clientList: Object.values(state.clients),
+        selectedClient: state.selectedClient
+    }
+}
+
+const formWrapper =  reduxForm({form: 'ClientFilterForm'})(ClientFilterForm);
+export default connect(mapStateToProps)(formWrapper);
