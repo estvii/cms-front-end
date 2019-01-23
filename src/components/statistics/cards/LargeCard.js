@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
+import SimpleListMenu from "./button/Button";
+import Grid from "@material-ui/core/Grid";
 
 class LargeCard extends Component {
   state = {
@@ -77,8 +79,20 @@ class LargeCard extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Grid container spacing={12}>
+            <Grid item xs={6}>
+              <h3>Statistics</h3>
+            </Grid>
+            <Grid item xs={3}>
+              {" "}
+            </Grid>
+            <Grid item xs={3}>
+              <SimpleListMenu />
+            </Grid>
+          </Grid>
+        </div>
         <MDBContainer>
-          <h3 className="mt-5">Statistics</h3>
           <Line data={this.state.dataLine} options={{ responsive: true }} />
         </MDBContainer>
       </div>
