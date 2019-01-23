@@ -6,6 +6,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const styles = theme => ({
   root: {
@@ -51,6 +52,7 @@ class SimpleListMenu extends React.Component {
             onClick={this.handleClickListItem}
           >
             <ListItemText primary={options[this.state.selectedIndex]} />
+            <ExpandMoreIcon />
           </ListItem>
         </List>
         <Menu

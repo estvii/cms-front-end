@@ -15,17 +15,15 @@ function index(props) {
   const { classes } = props;
 
   return (
-    <div className="large-card">
-      <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item xs={9}>
-            <LargeCard />
-          </Grid>
-          <Grid item xs={3}>
-            <SmallCard />
-          </Grid>
+    <div className="grid-card">
+      <Grid container spacing={24}>
+        <Grid item xs={9}>
+          <LargeCard />
         </Grid>
-      </div>
+        <Grid item xs={3}>
+          <SmallCard />
+        </Grid>
+      </Grid>
     </div>
   );
 }

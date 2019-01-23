@@ -12,7 +12,8 @@ import {
   MenuList,
   MenuItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Fab
 } from "@material-ui/core";
 import {
   Person,
@@ -20,7 +21,8 @@ import {
   BarChart,
   Menu,
   Notifications,
-  SettingsInputComponent
+  SettingsInputComponent,
+  PersonAdd
 } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
@@ -68,6 +70,16 @@ class NavBar extends Component {
             <ListItemText primary="Reports" />
           </MenuItem>
         </MenuList>
+        <div className={classes.toolbar} />
+        <div className={classes.toolbar} />
+        <div className={classes.toolbar} />
+        <div className={classes.toolbar} />
+        <div className="new-client">
+          <Fab variant="extended" color="primary" component={Link} to="/create">
+            <PersonAdd />
+            New Client
+          </Fab>
+        </div>
       </div>
     );
 

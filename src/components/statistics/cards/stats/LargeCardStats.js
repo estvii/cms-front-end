@@ -84,10 +84,10 @@ class LargeCardStats extends Component {
             <Grid item xs={6}>
               <h3>Statistics</h3>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={4}>
               {" "}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <SimpleListMenu />
             </Grid>
           </Grid>
