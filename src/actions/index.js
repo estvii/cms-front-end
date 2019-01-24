@@ -64,11 +64,11 @@ export const toggleClientStatus = (status_name,status,_id) => {
     }
 }
 
-export const updateClientFilter = (filterFormValues, id) => {
+export const updateClientFilter = (filterFormValues, _id) => {
     console.log(filterFormValues);
-    console.log(id);
+    console.log(_id);
     return async(dispatch) => {
-        const response = await backEnd.patch(`clients/${id}`, filterFormValues)
+        const response = await backEnd.patch(`clients/${_id}`, filterFormValues)
         // console.log(response);
         dispatch({type: UPDATE_CLIENT_FILTER, payload: response.data})
         history.push('/');

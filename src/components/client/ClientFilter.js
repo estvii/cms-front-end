@@ -9,18 +9,20 @@ import "./../../assets/css/client/main.css";
 class ClientFilter extends Component {
 
     onSubmit = (filterFormValues) => {
-        const { id } = this.props.selectedClient
-        this.props.updateClientFilter(filterFormValues, id);
+        const { _id } = this.props.selectedClient
+        this.props.updateClientFilter(filterFormValues, _id);
     }
 
     retrieveClient() {
-        const { id } = this.props.selectedClient
-        return _.find(this.props.clientList, {id})
+        const { _id } = this.props.selectedClient
+        return _.find(this.props.clientList, {_id})
     }
 
     passInitialFormValues() {
         const client = this.retrieveClient();
+        // console.log(client);
         const initialValues = _.pick(client,'job_title','industry','location','company_size','company_exclusion','message');
+        // console.log(initialValues);
         return initialValues;
     }
 
