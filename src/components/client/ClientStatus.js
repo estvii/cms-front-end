@@ -14,8 +14,10 @@ class ClientStatus extends Component {
     }
 
     retrieveClient() {
-        const { id } = this.props.selectedClient
-        return _.find(this.props.clientList, {id})
+        const { _id } = this.props.selectedClient
+        console.log(this.props.selectedClient)
+        return _.find(this.props.clientList, {_id})
+        // console.log(_id);
     }
 
     render() {

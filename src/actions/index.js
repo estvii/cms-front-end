@@ -19,7 +19,7 @@ const CLIENT_STATUS = {
 export const createClient = (formValues) => {
     return async (dispatch) => {
         const response = await backEnd.post('/clients', {...formValues, ...CLIENT_STATUS }); //needs user ID later and might need to getState ?
-        // console.log(response);
+        console.log(response);
         dispatch({type: CREATE_CLIENT, payload: response.data});
         // Redirect to client filter form
     }
@@ -50,13 +50,13 @@ export const selectClient = (selectedClient) => {
     };
 }
 // FIX ACTION 
-export const toggleClientStatus = (status_name,status,id) => {
+export const toggleClientStatus = (status_name,status,_id) => {
         // console.log('Toggle Action Called');
         // console.log(status_name);
         // console.log(status);
         // console.log(id);
     return async (dispatch) => {
-        const response = await backEnd.patch(`/clients/${id}`, {[status_name]: status});
+        const response = await backEnd.patch(`/clients/${_id}`, {[status_name]: status});
         console.log(response);
         dispatch({type: TOG_CLIENT_STATUS, payload: response.data});
     }

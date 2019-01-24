@@ -34,6 +34,7 @@ class ClientList extends Component {
     renderList() {
         // console.log(this.props.clientList);
         return this.props.clientList.map( client => {
+          console.log(client)
             return (
                 <div className="item" key={client.id}>
                     <button onClick={()=>this.props.selectClient(client)}>{client.name}</button> 
