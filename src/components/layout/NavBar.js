@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   AppBar,
@@ -27,6 +27,7 @@ import {
 import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
 import NavBarStyles from "./../../assets/styles/Navbar/NavBarStyles";
+import { compose } from "recompose";
 
 class NavBar extends Component {
   state = {
@@ -38,32 +39,47 @@ class NavBar extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      location: { pathname }
+    } = this.props;
 
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
         <MenuList>
-          <MenuItem component={Link} to="/">
+          <MenuItem component={Link} to="/" selected={"/" === pathname}>
             <ListItemIcon>
               <Person />
             </ListItemIcon>
             <ListItemText primary="Clients" />
           </MenuItem>
-          <MenuItem component={Link} to="/statistics">
+          <MenuItem
+            component={Link}
+            to="/statistics"
+            selected={"/statistics" === pathname}
+          >
             <ListItemIcon>
               <BarChart />
             </ListItemIcon>
             <ListItemText primary="Statistics" />
           </MenuItem>
-          <MenuItem component={Link} to="/client/filter">
+          <MenuItem
+            component={Link}
+            to="/client/filter"
+            selected={"/client/filter" === pathname}
+          >
             <ListItemIcon>
               <SettingsInputComponent />
             </ListItemIcon>
             <ListItemText primary="Filter" />
           </MenuItem>
-          <MenuItem component={Link} to="/reports">
+          <MenuItem
+            component={Link}
+            to="/reports"
+            selected={"/reports" === pathname}
+          >
             <ListItemIcon>
               <Notifications />
             </ListItemIcon>
@@ -149,4 +165,7 @@ NavBar.propTypes = {
   container: PropTypes.object
 };
 
-export default withStyles(NavBarStyles)(NavBar);
+export default compose(
+  withRouter,
+  withStyles(NavBarStyles)
+)(NavBar);

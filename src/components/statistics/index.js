@@ -12,8 +12,6 @@ const styles = theme => ({
 });
 
 function index(props) {
-  const { classes } = props;
-
   return (
     <div className="grid-card">
       <Grid container spacing={24}>
