@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-import SimpleListMenu from "./../button/Button";
-import Grid from "@material-ui/core/Grid";
 
-class LargeCardStats extends Component {
+class LargeDailyCardStats extends Component {
   state = {
     dataLine: {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
       datasets: [
         {
           label: "Invites sent x10",
@@ -28,7 +34,7 @@ class LargeCardStats extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: [1112, 2000, 3000, 3500, 2500, 2000, 3000]
         },
         {
           label: "Replies",
@@ -49,7 +55,7 @@ class LargeCardStats extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [10, 50, 10, 45, 56, 45, 23]
+          data: [1000, 1456, 2666, 3000, 4000, 3000, 1200]
         },
         {
           label: "Connections made",
@@ -70,28 +76,16 @@ class LargeCardStats extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [20, 40, 15, 56, 34, 77, 14]
+          data: [1500, 2400, 4400, 1200, 2000, 3444, 2000]
         }
       ]
     }
   };
 
   render() {
+    // console.log(this.state.dataLine.datasets[0].data);
     return (
       <div>
-        <div>
-          <Grid container spacing={12}>
-            <Grid item xs={6}>
-              <h3>Statistics</h3>
-            </Grid>
-            <Grid item xs={4}>
-              {" "}
-            </Grid>
-            <Grid item xs={2}>
-              <SimpleListMenu />
-            </Grid>
-          </Grid>
-        </div>
         <MDBContainer>
           <Line data={this.state.dataLine} options={{ responsive: true }} />
         </MDBContainer>
@@ -100,4 +94,16 @@ class LargeCardStats extends Component {
   }
 }
 
-export default LargeCardStats;
+// export const invitesDailyData = () => {
+//   return this.state.dataLine.datasets[0].data;
+// };
+
+// export const repliesDailyData = () => {
+//   return this.state.dataline.datasets[1].data;
+// };
+
+// export const connectionsDailyData = () => {
+//   return this.state.dataline.datasets[2].data;
+// };
+
+export default LargeDailyCardStats;
