@@ -22,15 +22,15 @@ export default (state = {}, action) => {
         case CREATE_CLIENT:
             return {...state, [action.payload.id]: action.payload };
         case FETCH_CLIENT_LIST:
-            return {...state, ..._.mapKeys(action.payload, "id")};
+            return {...state, ..._.mapKeys(action.payload, "_id")};
         // case FETCH_CLIENT:
         //     return {...state, [action.payload.id]: action.payload };
         case TOG_CLIENT_STATUS:
             // console.log('toggle client reducer called')
-            return {...state, [action.payload.id]: action.payload};
+            return {...state, [action.payload._id]: action.payload};
         case UPDATE_CLIENT_FILTER: 
             // console.log(action.payload);
-            return {...state, [action.payload.id]: action.payload};
+            return {...state, [action.payload._id]: action.payload};
             // return {...state, ...action.payload}
             
         default:

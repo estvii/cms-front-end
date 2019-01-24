@@ -29,22 +29,24 @@ class ClientList extends Component {
     }
   }
 
-  renderList() {
-    // console.log(this.props.clientList);
-    return this.props.clientList.map(client => {
-      return (
-        <div className="item" key={client.id}>
-          <button onClick={() => this.props.selectClient(client)}>
-            {client.name}
-          </button>
-          <br />
-          Account Status: {this.renderAccountStatus(client.account_status)}
-          Server Status: {this.renderServerStatus(client.server_status)}
-          <p>Verification Status: {client.verification_status}</p>
-        </div>
-      );
-    });
-  }
+    renderList() {
+        // console.log(this.props.clientList);
+        return this.props.clientList.map( client => {
+          console.log(client)
+            return (
+                <div className="item" key={client._id}>
+                    <button onClick={()=>this.props.selectClient(client)}>{client.name}</button> 
+                    <br/>
+                    Account Status: {this.renderAccountStatus(client.account_status)}
+                    Server Status: {this.renderServerStatus(client.server_status)}
+                    <p>Verification Status: {client.verification_status}</p>
+                </div>
+
+            );
+        });
+    }
+
+    
 
   render() {
     // console.log(this.props.selectedClient);

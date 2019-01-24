@@ -10,8 +10,8 @@ class ClientStatusToggle extends Component {
     state = {checked: false}
     
     retrieveClient() {
-        const { id } = this.props.selectedClient
-        return _.find(this.props.clientList, {id})
+        const { _id } = this.props.selectedClient
+        return _.find(this.props.clientList, {_id})
     }
 
     componentDidMount(){
@@ -36,22 +36,22 @@ class ClientStatusToggle extends Component {
         const {account_status, server_status} = client;
         
         if (status_type === "account_status"){
-            if (this.props.selectedClient.id !== prevProps.selectedClient.id) {
+            if (this.props.selectedClient._id !== prevProps.selectedClient._id) {
                 this.setState({checked: account_status})
             }
         } else if (status_type === "server_status") {
-            if (this.props.selectedClient.id !== prevProps.selectedClient.id) {
+            if (this.props.selectedClient._id !== prevProps.selectedClient._id) {
                 this.setState({checked: server_status})
             }
         }
     }
 
     handleChange = (checked) => {
-        const { id } = this.props.selectedClient
+        const { _id } = this.props.selectedClient
         const { status_type } = this.props
         this.setState({ checked })
-        // console.log(status_type);
-        this.props.toggleClientStatus(status_type,checked, id)
+        console.log(status_type);
+        this.props.toggleClientStatus(status_type,checked, _id)
     }
 
     renderLabel = () => {
