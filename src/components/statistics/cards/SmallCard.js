@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,16 +11,25 @@ const styles = {
   }
 };
 
-function SmallCard(props) {
-  const { classes } = props;
+class SmallCard extends Component {
+  state = {
+    showComponent: false
+  };
 
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        <SmallCardStats />
-      </CardContent>
-    </Card>
-  );
+  onButtonClick() {
+    this.setState({
+      showComponent: true
+    });
+  }
+  render() {
+    return (
+      <Card>
+        <CardContent>
+          <SmallCardStats />
+        </CardContent>
+      </Card>
+    );
+  }
 }
 
 SmallCard.propTypes = {

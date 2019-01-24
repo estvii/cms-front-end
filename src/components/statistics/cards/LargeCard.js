@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import LargeCardStats from "./stats/LargeCardStats";
+import MonthlyCardStats from "./stats/LargeCards/MonthlyCardStats";
+import DailyCardStats from "./stats/LargeCards/DailyCardStats";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const styles = {
   card: {
@@ -11,16 +14,42 @@ const styles = {
   }
 };
 
-function LargeCard(props) {
-  const { classes } = props;
+class LargeCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showComponent: false
+    };
+    this.onButtonClick = this.onButtonClick.bind(this);
+  }
 
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        <LargeCardStats />
-      </CardContent>
-    </Card>
-  );
+  onButtonClick() {
+    this.setState(prevState => ({
+      showComponent: !prevState.showComponent
+    }));
+  }
+  render() {
+    return (
+      <Card>
+        <CardContent>
+          <Grid container spacing={12}>
+            <Grid item xs={6}>
+              <h3>Statistics</h3>
+            </Grid>
+            <Grid item xs={4}>
+              {" "}
+            </Grid>
+            <Grid item xs={2}>
+              <Button onClick={this.onButtonClick}>
+                {this.state.showComponent ? `Daily` : `Monthly`}
+              </Button>
+            </Grid>
+          </Grid>
+          {this.state.showComponent ? <DailyCardStats /> : <MonthlyCardStats />}
+        </CardContent>
+      </Card>
+    );
+  }
 }
 
 LargeCard.propTypes = {
