@@ -20,14 +20,121 @@ class Statistics extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showComponent: false
+      showComponent: false,
+      dailyDataLine: {
+        labels: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        datasets: [
+          {
+            label: "Invites sent x10",
+            fill: false,
+            backgroundColor: "rgba(123, 239, 178, 1)",
+            borderColor: "rgba(123, 239, 178, 1)",
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(123, 239, 178, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(123, 239, 178, 1)",
+            data: [1112, 2000, 3000, 3500, 2500, 2000, 3000]
+          },
+          {
+            label: "Replies",
+            fill: false,
+            backgroundColor: "rgba(159, 90, 253, 1)",
+            borderColor: "rgba(159, 90, 253, 1)",
+            borderDash: [],
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(159, 90, 253, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(159, 90, 253, 1)",
+            data: [1000, 1456, 2666, 3000, 4000, 3000, 1200]
+          },
+          {
+            label: "Connections made",
+            fill: false,
+            backgroundColor: "rgba(0, 181, 204, 1)",
+            borderColor: "rgba(0, 181, 204, 1)",
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(0, 181, 204, 1)",
+            data: [1500, 2400, 4400, 1200, 2000, 3444, 2000]
+          }
+        ]
+      },
+      monthlyDataLine: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July"
+        ],
+        datasets: [
+          {
+            label: "Invites sent x10",
+            fill: false,
+            backgroundColor: "rgba(123, 239, 178, 1)",
+            borderColor: "rgba(123, 239, 178, 1)",
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(123, 239, 178, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(123, 239, 178, 1)",
+            data: [1500, 2000, 2666, 3000, 3300, 2700, 1200]
+          },
+          {
+            label: "Replies",
+            fill: false,
+            backgroundColor: "rgba(159, 90, 253, 1)",
+            borderColor: "rgba(159, 90, 253, 1)",
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(159, 90, 253, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(159, 90, 253, 1)",
+            data: [1300, 2111, 2666, 3000, 3600, 2400, 2000]
+          },
+          {
+            label: "Connections made",
+            fill: false,
+            backgroundColor: "rgba(0, 181, 204, 1)",
+            borderColor: "rgba(0, 181, 204, 1)",
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255, 1)",
+            pointHoverBorderColor: "rgba(0, 181, 204, 1)",
+            data: [2300, 1236, 3000, 2500, 4111, 3233, 2200]
+          }
+        ]
+      }
     };
     this.onButtonClick = this.onButtonClick.bind(this);
   }
-
-  state = {
-    showComponent: false
-  };
 
   onButtonClick() {
     this.setState(prevState => ({
@@ -35,6 +142,8 @@ class Statistics extends Component {
     }));
   }
   render() {
+    // console.log(this.state.test);
+
     return (
       <div className="large-card">
         <Grid container spacing={12} justify="space-evenly">
@@ -55,9 +164,9 @@ class Statistics extends Component {
                   </Grid>
                 </Grid>
                 {this.state.showComponent ? (
-                  <LargeDailyCardStats />
+                  <LargeDailyCardStats data={this.state.test} />
                 ) : (
-                  <LargeMonthlyCardStats />
+                  <LargeMonthlyCardStats data={this.state.test} />
                 )}
               </CardContent>
             </Card>
@@ -80,26 +189,3 @@ Statistics.propTypes = {
 };
 
 export default withStyles(styles)(Statistics);
-
-// class Index extends Component {
-//   render() {
-//     return (
-//       <div className="grid-card">
-//         <Grid container spacing={24}>
-//           <Grid item xs={9}>
-//             <LargeCard onClick={this.onButtonClick} />
-//           </Grid>
-//           <Grid item xs={3}>
-//             <SmallCard />
-//           </Grid>
-//         </Grid>
-//       </div>
-//     );
-//   }
-// }
-
-// Index.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-// export default withStyles(styles)(Index);
