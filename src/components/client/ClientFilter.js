@@ -13,12 +13,12 @@ class ClientFilter extends Component {
         this.props.updateClientFilter(filterFormValues, _id);
     }
 
-    retrieveClient() {
+    retrieveClient = () => {
         const { _id } = this.props.selectedClient
         return _.find(this.props.clientList, {_id})
     }
 
-    passInitialFormValues() {
+    passInitialFormValues = () => {
         const client = this.retrieveClient();
         // console.log(client);
         const initialValues = _.pick(client,'job_title','industry','location','company_size','company_exclusion','message');

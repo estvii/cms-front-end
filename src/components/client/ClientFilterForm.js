@@ -52,7 +52,7 @@ class ClientFilterForm extends Component {
         ]
     }
 
-    retrieveClient() {
+    retrieveClient = () => {
         const { id } = this.props.selectedClient
         // console.log(`Retrieved id:${id}`)
         return _.find(this.props.clientList, {id})
@@ -86,6 +86,7 @@ class ClientFilterForm extends Component {
     }
 
     render() {
+        console.log(this.props)
         const client = this.retrieveClient();
         // console.log(client);
         // console.log(this.props)

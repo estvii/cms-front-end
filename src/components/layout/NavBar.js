@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import _ from 'lodash';
+import { resetSelectedClient } from '../../actions';
+import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import {
   AppBar,
@@ -20,7 +23,8 @@ import {
   BarChart,
   Menu,
   Notifications,
-  SettingsInputComponent
+  SettingsInputComponent,
+  HighlightOff
 } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core/styles";
@@ -30,6 +34,35 @@ class NavBar extends Component {
   state = {
     mobileOpen: false
   };
+
+  retrieveClient = () => {
+    const { _id } = this.props.selectedClient
+    // console.log(this.props)
+    return _.find(this.props.clientList, {_id})
+  }
+
+  renderSelectedClient = () => {
+    const client = this.retrieveClient();
+    if (!client) {
+      return <div>Please Select Client</div>
+    } 
+    return (
+      <div>
+        {client.name}
+        <IconButton  onClick={() => this.removeSelectedClient()} >
+                <HighlightOff/>
+        </IconButton>
+      </div>
+    )
+  }
+
+  removeSelectedClient = () => {
+    this.props.resetSelectedClient();
+  }
+
+  totalClients = () => {
+    return this.props.clientList.length;
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -76,6 +109,8 @@ class NavBar extends Component {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
+
+            
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -87,6 +122,8 @@ class NavBar extends Component {
             <IconButton color="inherit">
               <Person />
             </IconButton>
+            <div>{this.totalClients()}</div>
+
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <Search />
@@ -99,6 +136,12 @@ class NavBar extends Component {
                 }}
               />
             </div>
+
+
+            
+            <div>{this.renderSelectedClient()}</div>
+
+
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
@@ -137,4 +180,12 @@ NavBar.propTypes = {
   container: PropTypes.object
 };
 
-export default withStyles(NavBarStyles)(NavBar);
+const mapStateToProps = (state) => {
+  return {
+    selectedClient: state.selectedClient,
+    clientList: Object.values(state.clients)
+  }
+}
+
+const navBarWrapper =  withStyles(NavBarStyles)(NavBar);
+export default connect(mapStateToProps, { resetSelectedClient })(navBarWrapper)

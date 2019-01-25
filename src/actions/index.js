@@ -6,6 +6,7 @@ import { FETCH_CLIENT_LIST } from './types';
 import { SELECT_CLIENT } from './types';
 import { TOG_CLIENT_STATUS } from './types';
 import { UPDATE_CLIENT_FILTER } from './types';
+import { RESET_SELECTED_CLIENT } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
@@ -52,6 +53,14 @@ export const selectClient = (selectedClient) => {
         payload: selectedClient
     };
 }
+
+export const resetSelectedClient = () => {
+    return async(dispatch) => {
+        dispatch({type: RESET_SELECTED_CLIENT});
+        history.push('/');
+    }
+}
+
 // FIX ACTION 
 export const toggleClientStatus = (status_name,status,_id) => {
         // console.log('Toggle Action Called');

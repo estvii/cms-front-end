@@ -9,7 +9,7 @@ class ClientStatusToggle extends Component {
 
     state = {checked: false}
     
-    retrieveClient() {
+    retrieveClient = () => {
         const { _id } = this.props.selectedClient
         return _.find(this.props.clientList, {_id})
     }
