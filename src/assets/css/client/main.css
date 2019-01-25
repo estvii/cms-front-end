@@ -11,3 +11,25 @@
     margin-left: 135px;
   }
 }
+
+.large-card {
+  margin-left: 260px;
+  margin-top: 90px;
+  margin-right: 20px;
+}
+
+.grid-card {
+  margin-left: 260px;
+  margin-top: 78px;
+  margin-right: 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .large-card {
+    margin-left: 110px;
+  }
+}
+
+.new-client {
+  margin-left: 50px;
+}

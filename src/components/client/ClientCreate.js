@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { createClient } from "../../actions/";
 import ClientCreateForm from "./ClientCreateForm";
 import "./../../assets/css/client/main.css";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 
 class ClientCreate extends Component {
@@ -25,9 +27,13 @@ class ClientCreate extends Component {
   render() {
     return (
       <div>
-        <div className="body">
-          <h3>Client Create</h3>
-          <ClientCreateForm onSubmit={this.onSubmit} />
+        <div className="large-card">
+          <Card>
+            <CardContent>
+              <h3>Client Create</h3>
+              <ClientCreateForm onSubmit={this.onSubmit} />
+            </CardContent>
+          </Card>
         </div>
       </div>
     );

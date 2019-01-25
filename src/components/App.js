@@ -6,7 +6,7 @@ import ClientFilter from "./client/ClientFilter";
 import ClientList from "./client/ClientList";
 import ClientStatus from "./client/ClientStatus";
 import history from "../history";
-import LargeCard from "./statistics/LargeCard";
+import Statistics from "./statistics/cards/Statistics";
 
 const App = () => {
   return (
@@ -25,8 +25,8 @@ const App = () => {
             </div>
           </div>
           <Route path="/create" exact component={ClientCreate} />
-          <Route path="/client/filter/" exact component={ClientFilter} />
-          <Route path="/statistics" exact component={LargeCard} />
+          <Route path="/client/filter" exact component={ClientFilter} />
+          <Route path="/statistics" exact component={Statistics} />
         </div>
       </Router>
     </div>

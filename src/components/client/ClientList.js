@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchClientList, selectClient } from "../../actions/";
 import "./../../assets/css/client/main.css";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 class ClientList extends Component {
   componentDidMount() {
@@ -52,10 +54,14 @@ class ClientList extends Component {
     // console.log(this.props.selectedClient);
     // console.log(this.props.clientList);
     return (
-      <div className="body">
-        <div>ClientList</div>
-        <div className="ui celled list">{this.renderList()}</div>
-      </div>
+      <Card>
+        <CardContent>
+          <div className="grid-card">
+            <div>ClientList</div>
+            <div className="ui celled list">{this.renderList()}</div>
+          </div>
+        </CardContent>
+      </Card>
     );
   }
 }

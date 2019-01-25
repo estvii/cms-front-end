@@ -13,6 +13,7 @@ const NavBarStyles = theme => ({
     }
   },
   appBar: {
+    background: "#1c2566",
     marginLeft: drawerWidth,
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`
