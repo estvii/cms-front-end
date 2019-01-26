@@ -67,6 +67,7 @@ export const toggleClientStatus = (status_name,status,_id) => {
         // console.log(status_name);
         // console.log(status);
         // console.log(id);
+        // if status_name = account_status && status = false  => server_status becomes false ??
     return async (dispatch) => {
         const response = await backEnd.patch(`/clients/${_id}`, {[status_name]: status});
         console.log(response);
