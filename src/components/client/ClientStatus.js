@@ -24,6 +24,7 @@ class ClientStatus extends Component {
                 <div>
                     <ClientStatusToggle status_type="account_status"/>
                     <Switch disabled checked={false} onChange={()=>{}}/>
+                    <label>Server Status</label>
                 </div>
             )            
         } 
