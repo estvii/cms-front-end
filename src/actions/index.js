@@ -23,7 +23,7 @@ export const createClient = (formValues) => {
     return async (dispatch) => {
         console.log(formValues);
         const response = await backEnd.post('/clients', {...formValues, ...CLIENT_STATUS }); //needs user ID later and might need to getState ?
-        // console.log(response);
+        dispatch({type: SELECT_CLIENT, payload: response.data});
         dispatch({type: CREATE_CLIENT, payload: response.data});
         history.push('/'); //Navigates user to root 
     }

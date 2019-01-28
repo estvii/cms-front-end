@@ -20,6 +20,10 @@ import { UPDATE_CLIENT_FILTER } from '../actions/types';
 export default (state = {}, action) => {
     switch (action.type) {
         case CREATE_CLIENT:
+            console.log(state);
+            console.log(action);
+            // the payload seems to returning all the arrays of created users and not the single user created
+            // please check
             return {...state, [action.payload._id]: action.payload };
         case FETCH_CLIENT_LIST:
             return {...state, ..._.mapKeys(action.payload, "_id")};

@@ -80,8 +80,8 @@ class ClientFilterForm extends Component {
   };
 
   render() {
-    console.log(this.props);
-    const client = this.retrieveClient();
+    // console.log(this.props);
+    
     // console.log(client);
     // console.log(this.props)
     const { handleSubmit } = this.props;
