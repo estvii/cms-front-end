@@ -141,11 +141,12 @@ class Statistics extends Component {
       showComponent: !prevState.showComponent
     }));
   }
+
   render() {
-    // console.log(this.state.test);
+    // console.log(this.state);
 
     return (
-      <div className="large-card">
+      <div className="statistics-card">
         <Grid container spacing={12} justify="space-evenly">
           <Grid item xs={12} sm={9}>
             <Card>
@@ -164,18 +165,18 @@ class Statistics extends Component {
                   </Grid>
                 </Grid>
                 {this.state.showComponent ? (
-                  <LargeDailyCardStats data={this.state.test} />
+                  <LargeDailyCardStats data={this.state} />
                 ) : (
-                  <LargeMonthlyCardStats data={this.state.test} />
+                  <LargeMonthlyCardStats data={this.state} />
                 )}
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={2} alignItems="center">
             {this.state.showComponent ? (
-              <SmallDailyCardStats />
+              <SmallDailyCardStats data={this.state} />
             ) : (
-              <SmallMonthlyCardStats />
+              <SmallMonthlyCardStats data={this.state} />
             )}
           </Grid>
         </Grid>

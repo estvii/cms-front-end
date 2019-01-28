@@ -47,11 +47,15 @@ class ClientFilter extends Component {
     // console.log(this.props);
     return (
       <div className="large-card">
-        <h1>Filters</h1>
-        <ClientFilterForm
-          initialValues={this.passInitialFormValues()}
-          onSubmit={this.onSubmit}
-        />
+        <Card>
+          <CardContent>
+            <h1>Filters</h1>
+            <ClientFilterForm
+              initialValues={this.passInitialFormValues()}
+              onSubmit={this.onSubmit}
+            />
+          </CardContent>
+        </Card>
       </div>
     );
   }
