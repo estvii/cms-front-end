@@ -141,11 +141,12 @@ class Statistics extends Component {
       showComponent: !prevState.showComponent
     }));
   }
+
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
-      <div className="large-card">
+      <div className="statistics-card">
         <Grid container spacing={12} justify="space-evenly">
           <Grid item xs={12} sm={9}>
             <Card>

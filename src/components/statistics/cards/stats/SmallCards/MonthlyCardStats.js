@@ -4,10 +4,6 @@ import Card from "@material-ui/core/Card";
 
 class SmallMonthlyCardStats extends Component {
   render() {
-    console.log(this.props.data.monthlyDataLine.datasets[0].data);
-    console.log(this.props.data.monthlyDataLine.datasets[1].data);
-    console.log(this.props.data.monthlyDataLine.datasets[2].data);
-
     const sumMonthlyInvites = this.props.data.monthlyDataLine.datasets[0].data.reduce(
       (total, amount, index, array) => {
         total += amount;
@@ -47,9 +43,28 @@ class SmallMonthlyCardStats extends Component {
 
     const averageMonthlyConnections = Math.round(sumMonthlyConnections);
 
+    //styling
+
+    const inviteColor = {
+      color: "rgba(123, 239, 178, 1)"
+    };
+
+    const repliesColor = {
+      color: "rgba(159, 90, 253, 1)"
+    };
+
+    const connectionsColor = {
+      color: "rgba(0, 181, 204, 1)"
+    };
+
+    const smallCardStyle = {
+      height: "35vw",
+      width: "10vw"
+    };
+
     return (
       <div>
-        <Card>
+        <Card style={smallCardStyle}>
           <Grid
             container
             spacing={24}
@@ -58,16 +73,16 @@ class SmallMonthlyCardStats extends Component {
             alignItems="center"
           >
             <Grid item xs={6}>
-              <h1>Average</h1>
+              <h4>Average</h4>
             </Grid>
             <Grid item xs={6}>
-              <h3>{averageMonthlyInvites}</h3>
+              <h3 style={inviteColor}>{averageMonthlyInvites}</h3>
             </Grid>
             <Grid item xs={6}>
-              <h3>{averageMonthlyReplies}</h3>
+              <h3 style={repliesColor}>{averageMonthlyReplies}</h3>
             </Grid>
             <Grid item xs={6}>
-              <h3>{averageMonthlyConnections}</h3>
+              <h3 style={connectionsColor}>{averageMonthlyConnections}</h3>
             </Grid>
           </Grid>
         </Card>
