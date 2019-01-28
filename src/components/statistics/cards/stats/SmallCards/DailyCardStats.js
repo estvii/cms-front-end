@@ -20,7 +20,7 @@ class SmallDailyCardStats extends Component {
               <h1>Average</h1>
             </Grid>
             <Grid item xs={6}>
-              <h3>111</h3>
+              <h3>{this.props[0]}</h3>
             </Grid>
             <Grid item xs={6}>
               <h3>222</h3>
