@@ -4,7 +4,7 @@ import { MDBContainer } from "mdbreact";
 
 class LargeMonthlyCardStats extends Component {
   render() {
-    console.log(this.props.data.monthlyDataLine);
+    // console.log(this.props.data.monthlyDataLine);
     return (
       <div>
         <MDBContainer>

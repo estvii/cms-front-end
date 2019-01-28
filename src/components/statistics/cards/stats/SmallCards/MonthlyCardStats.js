@@ -4,6 +4,49 @@ import Card from "@material-ui/core/Card";
 
 class SmallMonthlyCardStats extends Component {
   render() {
+    console.log(this.props.data.monthlyDataLine.datasets[0].data);
+    console.log(this.props.data.monthlyDataLine.datasets[1].data);
+    console.log(this.props.data.monthlyDataLine.datasets[2].data);
+
+    const sumMonthlyInvites = this.props.data.monthlyDataLine.datasets[0].data.reduce(
+      (total, amount, index, array) => {
+        total += amount;
+        if (index === array.length - 1) {
+          return total / array.length;
+        } else {
+          return total;
+        }
+      }
+    );
+
+    const averageMonthlyInvites = Math.round(sumMonthlyInvites);
+
+    const sumMonthlyReplies = this.props.data.monthlyDataLine.datasets[1].data.reduce(
+      (total, amount, index, array) => {
+        total += amount;
+        if (index === array.length - 1) {
+          return total / array.length;
+        } else {
+          return total;
+        }
+      }
+    );
+
+    const averageMonthlyReplies = Math.round(sumMonthlyReplies);
+
+    const sumMonthlyConnections = this.props.data.monthlyDataLine.datasets[2].data.reduce(
+      (total, amount, index, array) => {
+        total += amount;
+        if (index === array.length - 1) {
+          return total / array.length;
+        } else {
+          return total;
+        }
+      }
+    );
+
+    const averageMonthlyConnections = Math.round(sumMonthlyConnections);
+
     return (
       <div>
         <Card>
@@ -18,13 +61,13 @@ class SmallMonthlyCardStats extends Component {
               <h1>Average</h1>
             </Grid>
             <Grid item xs={6}>
-              <h3>444</h3>
+              <h3>{averageMonthlyInvites}</h3>
             </Grid>
             <Grid item xs={6}>
-              <h3>555</h3>
+              <h3>{averageMonthlyReplies}</h3>
             </Grid>
             <Grid item xs={6}>
-              <h3>666</h3>
+              <h3>{averageMonthlyConnections}</h3>
             </Grid>
           </Grid>
         </Card>
@@ -32,5 +75,17 @@ class SmallMonthlyCardStats extends Component {
     );
   }
 }
+
+// averageMonthlyInvites() {
+//   this.props.data.monthlyDataLine.datasets[0].data[0];
+// }
+
+// averageMonthlyReplies() {
+//   this.props.data.monthlyDataLine.datasets[1].data[1];
+// }
+
+// averageMonthlyReplies() {
+//   this.props.data.monthlyDataLine.datasets[2].data[1];
+// }
 
 export default SmallMonthlyCardStats;

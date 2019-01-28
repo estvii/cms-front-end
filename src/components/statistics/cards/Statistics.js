@@ -173,13 +173,9 @@ class Statistics extends Component {
           </Grid>
           <Grid item xs={12} sm={2} alignItems="center">
             {this.state.showComponent ? (
-              <SmallDailyCardStats
-              // data={this.state.dailyDataLine.datasets[0].data}
-              />
+              <SmallDailyCardStats data={this.state} />
             ) : (
-              <SmallMonthlyCardStats
-              // data={this.state.monthlyDataLine.datasets.data}
-              />
+              <SmallMonthlyCardStats data={this.state} />
             )}
           </Grid>
         </Grid>
