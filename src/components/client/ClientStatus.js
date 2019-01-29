@@ -2,14 +2,17 @@ import _ from 'lodash';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { Field, reduxForm} from 'redux-form';
-import { toggleClientStatus } from '../../actions';
+import { toggleClientStatus, editClient } from '../../actions';
 import Switch from 'react-switch';
 import ClientStatusToggle from './ClientStatusToggle';
 import "./../../assets/css/client/main.css";
+import ClientCreateForm from './ClientCreateForm';
 
 class ClientStatus extends Component {
 
     onSubmit = (formValues) => {
+        const { _id } = this.props.selectedClient
+        this.props.editClient(_id,formValues);
     }
 
     retrieveClient = () => {
@@ -45,6 +48,7 @@ class ClientStatus extends Component {
             return <div className="client-status">Please Select Client</div>
         }
         const client = this.retrieveClient();
+        console.log(client);
         this.renderToggleButtons();
         return (
             <div className="client-status">
@@ -61,6 +65,7 @@ class ClientStatus extends Component {
                     Password: {client.password}
                     <br/>
                 </div>
+                <ClientCreateForm initialValues={_.pick(client, 'name','email','password')} onSubmit={this.onSubmit}/>
             </div>
         );
     }
@@ -73,4 +78,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {toggleClientStatus})(ClientStatus);
+export default connect(mapStateToProps, {toggleClientStatus, editClient})(ClientStatus);

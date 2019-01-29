@@ -1,4 +1,5 @@
 export const CREATE_CLIENT = 'CREATE_CLIENT';
+export const EDIT_CLIENT = 'EDIT_CLIENT';
 export const FETCH_CLIENT_LIST = 'FETCH_CLIENT_LIST';
 // export const FETCH_CLIENT = 'FETCH_CLIENT'
 export const SELECT_CLIENT = 'SELECT_CLIENT';

@@ -7,6 +7,7 @@ import { SELECT_CLIENT } from './types';
 import { TOG_CLIENT_STATUS } from './types';
 import { UPDATE_CLIENT_FILTER } from './types';
 import { RESET_SELECTED_CLIENT } from './types';
+import { EDIT_CLIENT } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
@@ -34,6 +35,17 @@ export const fetchClientList = () => {
         const response = await backEnd.get('/clients');
         // console.log(response);
         dispatch({type: FETCH_CLIENT_LIST, payload: response.data});
+    }
+}
+
+export const editClient = (_id, formValues) => {
+    return async (dispatch) => {
+        console.log(_id);
+        console.log(formValues);
+        const response = await backEnd.patch(`/clients/${_id}`, formValues)
+        console.log(response);
+        dispatch({type: EDIT_CLIENT, payload: response.data});
+        history.push('/');
     }
 }
 

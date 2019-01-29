@@ -33,7 +33,8 @@ class ClientForm extends Component {
 
     render() {
         const { handleSubmit, pristine, submitting }= this.props
-        // console.log(this.props);
+        console.log(`here`);
+        console.log(this.props);
         return(
             <div>
                 <form onSubmit={handleSubmit(this.onSubmit)}>      
@@ -69,5 +70,6 @@ const validate = (formValues) => {
 
 export default reduxForm({
     form: 'ClientForm',
-    validate: validate
+    validate: validate,
+    enableReinitialize: true
 })(ClientForm);
