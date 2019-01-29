@@ -5,6 +5,7 @@ import { FETCH_CLIENT_LIST } from '../actions/types'
 import { TOG_CLIENT_STATUS } from '../actions/types'
 import { UPDATE_CLIENT_FILTER } from '../actions/types';
 import { EDIT_CLIENT } from '../actions/types';
+import { DESTROY_CLIENT } from '../actions/types';
 
 // Maybe find the client id and just append it to it?
 
@@ -29,13 +30,11 @@ export default (state = {}, action) => {
         // case FETCH_CLIENT:
         //     return {...state, [action.payload.id]: action.payload };
         case TOG_CLIENT_STATUS:
-            // console.log('toggle client reducer called')
             return {...state, [action.payload._id]: action.payload};
         case UPDATE_CLIENT_FILTER: 
-            // console.log(action.payload);
             return {...state, [action.payload._id]: action.payload};
-            // return {...state, ...action.payload}
-            
+        case DESTROY_CLIENT:
+            return _.omit(state, action.payload);
         default:
             return state;
     }   

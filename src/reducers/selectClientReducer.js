@@ -1,7 +1,8 @@
 import { 
     SELECT_CLIENT,
     RESET_SELECTED_CLIENT,
-    CREATE_CLIENT
+    CREATE_CLIENT,
+    DESTROY_CLIENT
 } from '../actions/types'
 
 export default(selectedClient = {}, action) => {
@@ -9,7 +10,7 @@ export default(selectedClient = {}, action) => {
     switch(action.type) {
         case SELECT_CLIENT || CREATE_CLIENT:
             return {...selectedClient, [_id]: action.payload._id}
-        case RESET_SELECTED_CLIENT:
+        case RESET_SELECTED_CLIENT || DESTROY_CLIENT: 
             return selectedClient = {};
             // return _.omit(selected)
         default:
