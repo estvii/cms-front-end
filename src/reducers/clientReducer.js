@@ -4,6 +4,8 @@ import { FETCH_CLIENT_LIST } from '../actions/types'
 // import { FETCH_CLIENT } from '../actions/types'
 import { TOG_CLIENT_STATUS } from '../actions/types'
 import { UPDATE_CLIENT_FILTER } from '../actions/types';
+import { EDIT_CLIENT } from '../actions/types';
+import { DESTROY_CLIENT } from '../actions/types';
 
 // Maybe find the client id and just append it to it?
 
@@ -20,23 +22,19 @@ import { UPDATE_CLIENT_FILTER } from '../actions/types';
 export default (state = {}, action) => {
     switch (action.type) {
         case CREATE_CLIENT:
-            console.log(state);
-            console.log(action);
-            // the payload seems to returning all the arrays of created users and not the single user created
-            // please check
             return {...state, [action.payload._id]: action.payload };
         case FETCH_CLIENT_LIST:
             return {...state, ..._.mapKeys(action.payload, "_id")};
+        case EDIT_CLIENT:
+            return {...state, [action.payload._id]: action.payload };
         // case FETCH_CLIENT:
         //     return {...state, [action.payload.id]: action.payload };
         case TOG_CLIENT_STATUS:
-            // console.log('toggle client reducer called')
             return {...state, [action.payload._id]: action.payload};
         case UPDATE_CLIENT_FILTER: 
-            // console.log(action.payload);
             return {...state, [action.payload._id]: action.payload};
-            // return {...state, ...action.payload}
-            
+        case DESTROY_CLIENT:
+            return _.omit(state, action.payload);
         default:
             return state;
     }   

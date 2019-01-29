@@ -7,6 +7,8 @@ import { SELECT_CLIENT } from './types';
 import { TOG_CLIENT_STATUS } from './types';
 import { UPDATE_CLIENT_FILTER } from './types';
 import { RESET_SELECTED_CLIENT } from './types';
+import { EDIT_CLIENT } from './types';
+import { DESTROY_CLIENT } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
@@ -37,6 +39,25 @@ export const fetchClientList = () => {
     }
 }
 
+export const editClient = (_id, formValues) => {
+    return async (dispatch) => {
+        // console.log(_id);
+        // console.log(formValues);
+        const response = await backEnd.patch(`/clients/${_id}`, formValues)
+        console.log(response);
+        dispatch({type: EDIT_CLIENT, payload: response.data});
+        history.push('/');
+    }
+}
+
+export const destroyClient = (_id) => {
+    return async (dispatch) => {
+        await backEnd.delete(`/clients/${_id}`)
+        dispatch({type: RESET_SELECTED_CLIENT});
+        dispatch({type: DESTROY_CLIENT, payload: _id});
+    }
+}
+
 // export const fetchClient = (id) => {
 //     return async (dispatch) => {
 //         const response = await backEnd.get(`/clients/${id}`)
@@ -57,7 +78,6 @@ export const selectClient = (selectedClient) => {
 export const resetSelectedClient = () => {
     return async(dispatch) => {
         dispatch({type: RESET_SELECTED_CLIENT});
-        history.push('/');
     }
 }
 

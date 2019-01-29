@@ -159,5 +159,5 @@ const mapStateToProps = state => {
   };
 };
 
-const formWrapper = reduxForm({ form: "ClientFilterForm" })(ClientFilterForm);
+const formWrapper = reduxForm({ form: "ClientFilterForm", enableReinitialize: true })(ClientFilterForm);
 export default connect(mapStateToProps)(formWrapper);
