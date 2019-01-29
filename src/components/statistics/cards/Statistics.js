@@ -152,10 +152,10 @@ class Statistics extends Component {
   //     .then(response => {
   //       console.log(response.data.data);
   //       let dailyDataCopy = JSON.parse(
-  //         JSON.stringify(this.state.dailyDataLine.datasets)
+  //         JSON.stringify(this.state.dailyDataLine)
   //       );
-  //       dailyDataCopy[0].data = this.setState({
-  //         data: response.data.data
+  //       dailyDataCopy.datasets[0].data = this.setState({
+  //         dailyDataLine: response.data.data
   //       });
   //     })
   //     .catch(error => {

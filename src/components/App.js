@@ -7,6 +7,7 @@ import ClientList from "./client/ClientList";
 import ClientStatus from "./client/ClientStatus";
 import history from "../history";
 import Statistics from "./statistics/cards/Statistics";
+import Reports from "./reports/Reports";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/create" exact component={ClientCreate} />
           <Route path="/client/filter" exact component={ClientFilter} />
           <Route path="/statistics" exact component={Statistics} />
+          <Route path="/reports" exact component={Reports} />
         </div>
       </Router>
     </div>
