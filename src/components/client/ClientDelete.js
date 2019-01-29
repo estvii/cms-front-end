@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -27,9 +27,9 @@ const styles = theme => ({
   },
 });
 
-class SimpleModal extends React.Component {
+class SimpleModal extends Component {
   state = {
-    open: false,
+    open: false
   };
 
   handleOpen = () => {
@@ -45,28 +45,31 @@ class SimpleModal extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { classes, client_name } = this.props;
     return (
       <div>
-        {/* <Typography gutterBottom>Click to get the full Modal experience!</Typography> */}
-        <Button variant="contained" color="secondary" onClick={this.handleOpen}>Delete Client</Button>
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
-          <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h6" id="modal-title">
-              Deleting <b>{client_name}</b>
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Are you sure you want to delete <b>{client_name}</b> ?
-            </Typography>
-            <Button variant="contained" color="secondary" onClick={this.deleteClient}>DELETE</Button>
-            <Button variant="contained" color="primary" onClick={this.handleClose}>Cancel</Button>
-          </div>
-        </Modal>
+
+        
+          <Button variant="contained" color="secondary" onClick={this.handleOpen}>Delete Client</Button>
+          <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={this.state.open}
+            onClose={this.handleClose}
+          >
+            <div style={getModalStyle()} className={classes.paper}>
+              <Typography variant="h6" id="modal-title">
+                Deleting <b>{client_name}</b>
+              </Typography>
+              <Typography variant="subtitle1" id="simple-modal-description">
+                Are you sure you want to delete <b>{client_name}</b> ?
+              </Typography>
+              <Button variant="contained" color="secondary" onClick={this.deleteClient}>DELETE</Button>
+              <Button variant="contained" color="primary" onClick={this.handleClose}>Cancel</Button>
+            </div>
+          </Modal>
+        
       </div>
     );
   }

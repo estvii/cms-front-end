@@ -71,7 +71,7 @@ class ClientStatus extends Component {
                 </div>
                 <div>
                     <h2>Delete Client</h2>
-                    <SimpleModalWrapped client_name = {client.name} deleteClient={this.deleteClient} />
+                    <SimpleModalWrapped client_name={client.name} deleteClient={this.deleteClient} />
                 </div>
             </div>
         );
