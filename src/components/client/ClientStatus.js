@@ -8,10 +8,12 @@ import ClientStatusToggle from './ClientStatusToggle';
 import "./../../assets/css/client/main.css";
 import ClientCreateForm from './ClientCreateForm';
 import SimpleModalWrapped from './ClientDelete';
+import ClientNotesForm from './ClientNotesForm';
 
 class ClientStatus extends Component {
 
     onSubmit = (formValues) => {
+        console.log(formValues);
         const { _id } = this.props.selectedClient
         this.props.editClient(_id,formValues);
     }
@@ -56,7 +58,7 @@ class ClientStatus extends Component {
             <div className="client-status">
                 <h2>Client Name: {client.name}</h2>
                 {this.renderToggleButtons()}
-                <h2>Client Info: </h2>
+                {/* <h2>Client Info: </h2> */}
                 <div>
                     Client Name: {client.name}
                     <br/>
@@ -66,11 +68,14 @@ class ClientStatus extends Component {
                     <br/>
                 </div>
                 <div>
+                    <ClientNotesForm initialValues={_.pick(client, 'client_notes')} onSubmit={this.onSubmit}/>
+                </div>
+                <div>
                     <h2>Update Client Information</h2>
                     <ClientCreateForm initialValues={_.pick(client, 'name','email','password')} onSubmit={this.onSubmit}/>
                 </div>
+                <br/>
                 <div>
-                    <h2>Delete Client</h2>
                     <SimpleModalWrapped client_name={client.name} deleteClient={this.deleteClient} />
                 </div>
             </div>

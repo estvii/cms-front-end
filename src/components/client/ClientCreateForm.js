@@ -42,7 +42,6 @@ class ClientForm extends Component {
                     <br/>
                     <Field name="password" type="password" component={this.renderTextField} label="Enter password: " placeholder="Password" autoComplete="off" />
                     <br />
-                    <br />
                     <button className="ui primary button"type="submit" disabled={pristine || submitting}>Submit</button>
                 </form>
             </div>
