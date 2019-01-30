@@ -9,6 +9,7 @@ import "./../../assets/css/client/main.css";
 import ClientCreateForm from './ClientCreateForm';
 import SimpleModalWrapped from './ClientDelete';
 import ClientNotesForm from './ClientNotesForm';
+import { CardContent, Card } from '@material-ui/core';
 
 class ClientStatus extends Component {
 
@@ -56,6 +57,8 @@ class ClientStatus extends Component {
         this.renderToggleButtons();
         return (
             <div className="client-status">
+            <Card>
+                <CardContent>
                 <h2>Client Name: {client.name}</h2>
                 {this.renderToggleButtons()}
                 {/* <h2>Client Info: </h2> */}
@@ -78,6 +81,8 @@ class ClientStatus extends Component {
                 <div>
                     <SimpleModalWrapped client_name={client.name} deleteClient={this.deleteClient} />
                 </div>
+                </CardContent>
+                </Card>
             </div>
         );
     }
