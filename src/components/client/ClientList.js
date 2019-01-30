@@ -22,12 +22,14 @@ class ClientList extends Component {
     // console.log(this.props.clientList);
     return (
       
-        // // <Card>
+        // <Card>
         // {/* <CardContent> */}
+        <div className='grid-card'>
           <Table
             clientList={this.props.clientList}
             onSelectClient={this.onSelectClient}
           />
+        </div>
       //   {/* </CardContent> */}
       // {/* </Card> */}
       

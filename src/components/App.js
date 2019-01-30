@@ -13,16 +13,16 @@ const App = () => {
     <div>
       <Router history={history}>
         <div>
-          {/* <NavBar /> */}
-          <div className="ui container grid">
+          <NavBar />
+          {/* <div className="ui container grid">
             <div className="ui row">
-              <div className="column ten wide">
+              <div className="column ten wide"> */}
                 <Route path="/" exact component={ClientList} />
-              </div>
+              {/* </div> */}
               <div className="column six wide">
                 <Route path="/" exact component={ClientStatus} />
-              </div>
-            </div>
+              {/* </div> */}
+            {/* </div> */}
           </div>
           <Route path="/create" exact component={ClientCreate} />
           <Route path="/client/filter" exact component={ClientFilter} />
