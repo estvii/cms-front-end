@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Tabs from "react-responsive-tabs";
 import "react-responsive-tabs/styles.css";
 import LongTextSnackBar from "./ServerReports";
-import SimpleForm from "./ServerMessages/ServerMessages";
+import SimpleForm from "./ServerMessages";
 
 const reportsForms = [
   { title: "Server Reports", body: <LongTextSnackBar /> },
