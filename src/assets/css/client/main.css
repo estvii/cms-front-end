@@ -4,8 +4,11 @@
 }
 
 .client-status {
-  margin-top: 70px;
+  margin-top: 90px;
+  position: fixed;
+  margin-left: 10vw;
 }
+
 @media screen and (max-width: 600px) {
   .body {
     margin-left: 135px;
@@ -26,8 +29,15 @@
 
 .grid-card {
   margin-left: 260px;
-  margin-top: 78px;
+  margin-top: 90px;
   margin-right: 24px;
+}
+
+.clientlist-card {
+  margin-left: 120px;
+  margin-top: 90px;
+  margin-right: 24px;
+  width: 113%;
 }
 
 @media screen and (max-width: 600px) {
@@ -39,3 +49,5 @@
 .new-client {
   margin-left: 50px;
 }
+
+/* REPORTS PAGE STYLING */

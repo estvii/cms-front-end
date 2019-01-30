@@ -4,7 +4,7 @@ import { fetchClientList, selectClient } from "../../actions/";
 import "./../../assets/css/client/main.css";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Table from './ClientListTable';
+import Table from "./ClientListTable";
 
 class ClientList extends Component {
   componentDidMount() {
@@ -12,27 +12,25 @@ class ClientList extends Component {
     // console.log(this.props.fetchClientList());
   }
 
-  onSelectClient = (client) => {
-    console.log('here');
-    this.props.selectClient(client)
-  }
-    
+  onSelectClient = client => {
+    console.log("here");
+    this.props.selectClient(client);
+  };
+
   render() {
     // console.log(this.props.selectedClient);
     // console.log(this.props.clientList);
     return (
-      
-        // <Card>
-        // {/* <CardContent> */}
-        <div className='grid-card'>
-          <Table
-            clientList={this.props.clientList}
-            onSelectClient={this.onSelectClient}
-          />
-        </div>
+      // <Card>
+      // {/* <CardContent> */}
+      <div className="grid-card">
+        <Table
+          clientList={this.props.clientList}
+          onSelectClient={this.onSelectClient}
+        />
+      </div>
       //   {/* </CardContent> */}
       // {/* </Card> */}
-      
     );
   }
 }

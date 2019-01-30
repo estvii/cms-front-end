@@ -7,6 +7,7 @@ import ClientList from "./client/ClientList";
 import ClientStatus from "./client/ClientStatus";
 import history from "../history";
 import Statistics from "./statistics/cards/Statistics";
+import Reports from "./reports/Reports";
 
 const App = () => {
   return (
@@ -14,19 +15,20 @@ const App = () => {
       <Router history={history}>
         <div>
           <NavBar />
-          {/* <div className="ui container grid">
+          <div className="ui container grid">
             <div className="ui row">
-              <div className="column ten wide"> */}
+              <div className="column ten wide">
                 <Route path="/" exact component={ClientList} />
-              {/* </div> */}
+              </div>
               <div className="column six wide">
                 <Route path="/" exact component={ClientStatus} />
-              {/* </div> */}
-            {/* </div> */}
+              </div>
+            </div>
           </div>
           <Route path="/create" exact component={ClientCreate} />
           <Route path="/client/filter" exact component={ClientFilter} />
           <Route path="/statistics" exact component={Statistics} />
+          <Route path="/reports" exact component={Reports} />
         </div>
       </Router>
     </div>

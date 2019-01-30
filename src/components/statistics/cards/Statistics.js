@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -141,6 +142,26 @@ class Statistics extends Component {
       showComponent: !prevState.showComponent
     }));
   }
+
+  // componentDidMount() {
+  //   axios
+  //     .get(
+  //       `https://qrng.anu.edu.au/API/jsonI.php?length=7&type=uint16
+  //   `
+  //     )
+  //     .then(response => {
+  //       console.log(response.data.data);
+  //       let dailyDataCopy = JSON.parse(
+  //         JSON.stringify(this.state.dailyDataLine)
+  //       );
+  //       dailyDataCopy.datasets[0].data = this.setState({
+  //         dailyDataLine: response.data.data
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     // console.log(this.state);

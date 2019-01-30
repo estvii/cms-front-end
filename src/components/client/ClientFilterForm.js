@@ -76,12 +76,19 @@ class ClientFilterForm extends Component {
 
   renderSelectList = selectValues => {
     const { input, data } = selectValues;
-    return <SelectList {...input} onBlur={() => input.onBlur()} data={data} />;
+    return (
+      <SelectList
+        multiple="true"
+        {...input}
+        onBlur={() => input.onBlur()}
+        data={data}
+      />
+    );
   };
 
   render() {
     // console.log(this.props);
-    
+
     // console.log(client);
     // console.log(this.props)
     const { handleSubmit } = this.props;
