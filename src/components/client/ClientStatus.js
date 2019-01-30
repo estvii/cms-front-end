@@ -5,16 +5,13 @@ import { connect } from "react-redux";
 import { toggleClientStatus, editClient, destroyClient } from "../../actions";
 import Switch from "react-switch";
 import ClientStatusToggle from "./ClientStatusToggle";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import "./../../assets/css/client/main.css";
 import ClientCreateForm from "./ClientCreateForm";
 import SimpleModalWrapped from "./ClientDelete";
 import ClientNotesForm from "./ClientNotesForm";
+import { CardContent, Card } from "@material-ui/core";
 
 class ClientStatus extends Component {
-  onSubmit = formValues => {};
-
   onSubmit = formValues => {
     console.log(formValues);
     const { _id } = this.props.selectedClient;
