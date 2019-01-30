@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function getModalStyle() {
   const top = 50
@@ -51,7 +52,10 @@ class SimpleModal extends Component {
       <div>
 
         
-          <Button variant="contained" color="secondary" onClick={this.handleOpen}>Delete Client</Button>
+          <Button variant="contained" color="secondary" onClick={this.handleOpen}>
+            Delete Client
+            <DeleteIcon className={classes.rightIcon} />
+          </Button>
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"

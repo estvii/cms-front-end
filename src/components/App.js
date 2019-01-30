@@ -13,7 +13,7 @@ const App = () => {
     <div>
       <Router history={history}>
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
           <div className="ui container grid">
             <div className="ui row">
               <div className="column ten wide">
