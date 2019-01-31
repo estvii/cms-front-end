@@ -3,15 +3,15 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Tabs from "react-responsive-tabs";
 import "react-responsive-tabs/styles.css";
-import LongTextSnackBar from "./ServerReports";
-import SimpleForm from "./ServerMessages";
+import ServerReports from "./ServerReports";
+import MessagesForm from "./ServerMessages";
 
 const reportsForms = [
-  { title: "Server Reports", body: <LongTextSnackBar /> },
-  { title: "Messages", body: <SimpleForm /> }
+  { title: "Server Reports", body: <ServerReports /> },
+  { title: "Messages", body: <MessagesForm /> }
 ];
 
-function getTabs() {
+const getTabs = () => {
   return reportsForms.map((reportsForm, index) => ({
     title: reportsForm.title,
     getContent: () => reportsForm.body,
@@ -19,7 +19,7 @@ function getTabs() {
     tabClassName: "tab",
     panelClassName: "panel"
   }));
-}
+};
 
 class Reports extends Component {
   render() {

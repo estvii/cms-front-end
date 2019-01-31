@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { Field, Form, reduxForm } from "redux-form";
-// import TextField from "@material-ui/core/TextField";
-
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 
 const snackBarStyle = {
@@ -9,79 +6,57 @@ const snackBarStyle = {
   margin: "5vh"
 };
 
-class SimpleForm extends Component {
+class MessagesForm extends Component {
   state = {
-    notes: "",
+    messages: "",
     isSubmitted: false,
-    notesList: []
+    messagesList: []
   };
 
-  handleNotesChange = event => {
-    this.setState({ notes: event.target.value });
+  handleMessagesChange = event => {
+    this.setState({ messages: event.target.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const { notes } = this.state;
+    const { messages } = this.state;
     this.setState({ isSubmitted: true });
-    const { reset } = this.props;
-    reset();
-    console.log(notes);
+
+    console.log(messages);
+    console.log(this.state.messageList);
   };
 
-  addNotes = () => {
-    let list = this.state.notesList;
+  addMessages = () => {
+    let list = this.state.messagesList;
     list.push(
-      <SnackbarContent style={snackBarStyle} message={this.state.notes} />
+      <SnackbarContent style={snackBarStyle} message={this.state.messages} />
     );
     this.setState({
-      notesList: list
+      messagesList: list
     });
   };
 
-  // submitMyForm = () => {
-  //   const { createRecord, resetForm } = this.props;
-
-  //   return createRecord(data).then(() => {
-  //     resetForm();
-  //   });
-  // };
-
-  // renderTextField = () => {
-  //   return (
-  //     <TextField
-  //       label="Leave a message"
-  //       multiline
-  //       margin="normal"
-  //       variant="outlined"
-  //     />
-  //   );
-  // };
-
   render() {
-    // const { handleSubmit, submitMyForm } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div>
         <div>
-          <div>{this.state.notesList}</div>
-          <Field
-            name="notes"
-            component="textarea"
+          <h1>{this.state.messagesList}</h1>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
             placeholder="Leave a message"
-            value={this.state.notes}
-            onChange={this.handleNotesChange}
+            value={this.state.messages}
+            onChange={this.handleMessagesChange}
           />
-        </div>
-        <div>
-          <button type="submit" onClick={this.addNotes}>
-            Send
-          </button>
-        </div>
-      </Form>
+
+          <input type="submit" value="Submit" onClick={this.addMessages} />
+        </form>
+      </div>
     );
   }
 }
 
-export default reduxForm({
-  form: "simple" // a unique identifier for this form
-})(SimpleForm);
+export default MessagesForm;

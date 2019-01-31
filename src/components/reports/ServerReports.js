@@ -7,29 +7,8 @@ const snackBarStyle = {
   margin: "5vh"
 };
 
-// function LongTextSnackbar(props) {
-//   const { classes } = props;
-
-//   return (
-//     <div>
-//       <SnackbarContent
-//         // className={classes.snackbar}
-//         message="01/01/2019 - System updated"
-//       />
-//       <SnackbarContent
-//         // className={classes.snackbar}
-//         message={"03/01/2019 - Server updated"}
-//       />
-//       <SnackbarContent
-//         // className={classes.snackbar}
-//         message="04/01/2019 - Security protocol updated"
-//       />
-//     </div>
-//   );
-// }
-
-class LongTextSnackbar extends Component {
-  state = {};
+class ServerReports extends Component {
+  state = { message: "" };
 
   render() {
     return (
@@ -52,8 +31,8 @@ class LongTextSnackbar extends Component {
   }
 }
 
-LongTextSnackbar.propTypes = {
+ServerReports.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default LongTextSnackbar;
+export default ServerReports;

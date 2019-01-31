@@ -9,7 +9,6 @@ import { UPDATE_CLIENT_FILTER } from "./types";
 import { RESET_SELECTED_CLIENT } from "./types";
 import { EDIT_CLIENT } from "./types";
 import { DESTROY_CLIENT } from "./types";
-import { ACCOUNT_SAVE_SUCCESS } from "./types";
 
 const CLIENT_STATUS = {
   verification_status: false,
