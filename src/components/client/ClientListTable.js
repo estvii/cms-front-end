@@ -25,10 +25,11 @@ const styles = theme => ({
   }
 });
 
+// pass 2 props down the full list and the filter list if filtered list is empty render client List
 
 function SimpleTable(props) {
     const { classes, clientList } = props;
-    console.log(props)
+    // console.log(props)
 
     const onSelectClient = (client) => {
         props.onSelectClient(client);
@@ -60,7 +61,6 @@ function SimpleTable(props) {
             return (
                 <TableRow key={client._id}>
                     <TableCell component="th" scope="row">
-                        {/* <button onClick={()=>onSelectClient(client)}>{client.name}</button>  */}
                         <Button className={classes.button} onClick={()=>onSelectClient(client)}>
                             {client.name}
                         </Button>

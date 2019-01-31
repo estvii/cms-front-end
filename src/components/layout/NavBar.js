@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import _ from "lodash";
-import { resetSelectedClient } from "../../actions";
+import { resetSelectedClient, searchClient } from "../../actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -66,6 +66,11 @@ class NavBar extends Component {
   totalClients = () => {
     return this.props.clientList.length;
   };
+
+  onChange = (e) => {
+    // console.log(`call an action and update reducer ${e}`);
+    this.props.searchClient(e)
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -156,6 +161,7 @@ class NavBar extends Component {
               </div>
               <InputBase
                 placeholder="Search…"
+                onChange={(e) => this.onChange(e.target.value)}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
@@ -215,7 +221,8 @@ const navBarWrapper = compose(
 )(NavBar);
 export default connect(
   mapStateToProps,
-  { resetSelectedClient }
+  { resetSelectedClient,
+    searchClient }
 )(navBarWrapper);
 
 // const navBarWrapper =  withStyles(NavBarStyles)(NavBar);

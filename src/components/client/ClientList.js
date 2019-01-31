@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchClientList, selectClient } from "../../actions/";
+import { fetchClientList, selectClient} from "../../actions/";
 import "./../../assets/css/client/main.css";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,6 +12,12 @@ class ClientList extends Component {
     // console.log(this.props.fetchClientList());
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.searchClient !== prevProps.searchClient) {
+      
+    }
+  }
+
   onSelectClient = client => {
     console.log("here");
     this.props.selectClient(client);
@@ -20,12 +26,28 @@ class ClientList extends Component {
   render() {
     // console.log(this.props.selectedClient);
     // console.log(this.props.clientList);
+    const { clientList, searchClient } = this.props
+    console.log(this.props);
+    console.log(searchClient);
+    let filteredClients = clientList.filter(
+      (client) => {
+        if (!searchClient) {
+          return clientList;
+        }
+        console.log(`here`)
+        return client.name.toLowerCase().indexOf(searchClient.toLowerCase()) !== -1; 
+      }
+    );
+
+
+    console.log(filteredClients);
+
     return (
       // <Card>
       // {/* <CardContent> */}
       <div className="grid-card">
         <Table
-          clientList={this.props.clientList}
+          clientList={filteredClients}
           onSelectClient={this.onSelectClient}
         />
       </div>
@@ -38,7 +60,8 @@ class ClientList extends Component {
 const mapStateToProps = state => {
   return {
     clientList: Object.values(state.clients),
-    selectedClient: state.selectedClient
+    selectedClient: state.selectedClient,
+    searchClient: state.searchClient
   };
 };
 

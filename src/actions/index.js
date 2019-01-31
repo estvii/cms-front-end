@@ -9,6 +9,7 @@ import { UPDATE_CLIENT_FILTER } from './types';
 import { RESET_SELECTED_CLIENT } from './types';
 import { EDIT_CLIENT } from './types';
 import { DESTROY_CLIENT } from './types';
+import { SEARCH_CLIENT } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
@@ -110,5 +111,12 @@ export const updateClientFilter = (filterFormValues, _id) => {
         // console.log(response);
         dispatch({type: UPDATE_CLIENT_FILTER, payload: response.data})
         history.push('/');
+    }
+}
+
+export const searchClient = (searchTerm) => {
+    console.log(searchTerm);
+    return async(dispatch) => {
+        dispatch({type: SEARCH_CLIENT, payload: searchTerm});
     }
 }
