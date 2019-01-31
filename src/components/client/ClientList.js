@@ -12,12 +12,6 @@ class ClientList extends Component {
     // console.log(this.props.fetchClientList());
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.searchClient !== prevProps.searchClient) {
-      
-    }
-  }
-
   onSelectClient = client => {
     console.log("here");
     this.props.selectClient(client);
