@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, Form, reduxForm } from "redux-form";
+// import TextField from "@material-ui/core/TextField";
 
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 
@@ -23,7 +24,8 @@ class SimpleForm extends Component {
     event.preventDefault();
     const { notes } = this.state;
     this.setState({ isSubmitted: true });
-    // event.target.reset();
+    const { reset } = this.props;
+    reset();
     console.log(notes);
   };
 
@@ -37,10 +39,29 @@ class SimpleForm extends Component {
     });
   };
 
+  // submitMyForm = () => {
+  //   const { createRecord, resetForm } = this.props;
+
+  //   return createRecord(data).then(() => {
+  //     resetForm();
+  //   });
+  // };
+
+  // renderTextField = () => {
+  //   return (
+  //     <TextField
+  //       label="Leave a message"
+  //       multiline
+  //       margin="normal"
+  //       variant="outlined"
+  //     />
+  //   );
+  // };
+
   render() {
-    // const { handleSubmit } = this.props;
+    // const { handleSubmit, submitMyForm } = this.props;
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <Form onSubmit={this.handleSubmit}>
         <div>
           <div>{this.state.notesList}</div>
           <Field
@@ -56,7 +77,7 @@ class SimpleForm extends Component {
             Send
           </button>
         </div>
-      </form>
+      </Form>
     );
   }
 }
