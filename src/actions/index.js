@@ -125,13 +125,16 @@ export const searchClient = (searchTerm) => {
 export const pinCodeVerification = (pincode, _id) => {
     return async(dispatch) => {
         const response = await backEnd.post(`clients/verification/${_id}`, {pincode});
-        console.log(response.data.verification_status);
+            return response.data;
 
-        if (response.data.verification_status === true) {
-            dispatch({ type: PIN_CODE_VERIFICATION, payload: response.data})
-        }
+        // if (response.data.verification_status === true) {
+        //     dispatch({ type: PIN_CODE_VERIFICATION, payload: response.data})
+        // }        
+    }
+}
 
-        // console.log('Has been verified or something');
+
+// console.log('Has been verified or something');
         // Do i need to dispatch it to the redux store
         // Currently the start server in the modal isnt, rendering
         // Could potential be because the redux store hasnt been updated so the client list isnt being
@@ -145,5 +148,3 @@ export const pinCodeVerification = (pincode, _id) => {
         // }
 
         // dispatch({type: PIN_CODE_VERIFICATION, payload: response});
-    }
-}

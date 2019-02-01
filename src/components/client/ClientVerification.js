@@ -8,7 +8,7 @@ import ReactCodeInput from 'react-code-input';
 import { connect } from 'react-redux';
 import { pinCodeVerification, toggleClientStatus, resetSelectedClient } from '../../actions';
 // import SnackbarContent from "@material-ui/core/SnackbarContent";
-// import Grid from '@material-ui/core/Grid';
+
 
 // const snackBarStyle = {
 //     backgroundColor: "#c5cae9",
@@ -23,8 +23,6 @@ function getModalStyle() {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
-    // width: '650px',
-    // height: '250px',
   };
 }
 
@@ -50,7 +48,8 @@ const styles = theme => ({
 class ClientVerificationModal extends Component {
     state = {
         open: false,
-        pinCode: "",
+        pinInputCode: "",
+        pinResponse: ""
     };
 
     handleOpen = () => {
@@ -64,11 +63,12 @@ class ClientVerificationModal extends Component {
 
     onSubmit = () => {
         const { _id } = this.props.client
-        this.props.pinCodeVerification(this.state.pinCode, _id)
+        this.props.pinCodeVerification(this.state.pinInputCode, _id)
+            .then(res => this.setState({pinResponse: res}));
     } 
 
     onChange = (value) => {
-        this.setState({pinCode: value})
+        this.setState({pinInputCode: value})
     }
 
     onStartAccountAndServer = () => {
@@ -79,23 +79,23 @@ class ClientVerificationModal extends Component {
     }
 
     renderInputPin = () => {
-        if (this.props.client.verification_status === true) {
+        if (this.state.pinResponse.verification_status === true) {
             return <ReactCodeInput fields={6} type="text" disabled/>
         }
         return <ReactCodeInput fields={6} type="text" onChange={(value) => this.onChange(value)}/>
     }
 
     renderVerificationSubmitButton = () => {
-        if (this.props.client.verification_status === true) {
+        if (this.state.pinResponse.verification_status === true) {
             return <Button variant="contained" type="submit" disabled style={{fontSize:'0.8rem', minWidth:'120px'}}>Account Verified</Button>
-        } else if (this.state.pinCode.length !== 6) {
+        } else if (this.state.pinInputCode.length !== 6) {
             return <Button variant="contained" type="submit" disabled >Submit</Button>
         }
         return <Button variant="contained" color="primary" type="submit" value="submit" onClick={this.onSubmit}>Submit</Button>
         }
 
     renderStartServerButton = () => {
-        if (!this.props.client.verification_status) {
+        if (!this.state.pinResponse.verification_status) {
             return <Button variant="contained" color="primary" disabled style={{fontSize:'0.8rem', minWidth:'120px'}}>Start Server</Button>
         }
         return <Button variant="contained" color="primary" onClick={this.onStartAccountAndServer} style={{fontSize:'0.8rem', minWidth:'120px'}}>Start Server</Button>
@@ -104,9 +104,10 @@ class ClientVerificationModal extends Component {
   render() {
     // const { spacing } = this.state;
     const { classes, client } = this.props;
+    console.log(this.state.pinResponse);
     // console.log(client);
     // const { handleSubmit, pristine, submitting }= this.props
-    // console.log(this.state.pinCode);
+    // console.log(this.state.pinInputCode);
     return (
       <div>
           <Button variant="contained" onClick={this.handleOpen}>
