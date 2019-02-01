@@ -7,7 +7,7 @@ import Switch from "react-switch";
 import ClientStatusToggle from "./ClientStatusToggle";
 import "./../../assets/css/client/main.css";
 import ClientCreateForm from "./ClientCreateForm";
-import SimpleModalWrapped from "./ClientDelete";
+import ClientDeleteModal from "./ClientDelete";
 import ClientNotesForm from "./ClientNotesForm";
 import { CardContent, Card } from "@material-ui/core";
 
@@ -83,7 +83,7 @@ class ClientStatus extends Component {
             </div>
             <br />
             <div>
-              <SimpleModalWrapped
+              <ClientDeleteModal
                 client_name={client.name}
                 deleteClient={this.deleteClient}
               />

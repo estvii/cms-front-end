@@ -10,6 +10,7 @@ import { RESET_SELECTED_CLIENT } from './types';
 import { EDIT_CLIENT } from './types';
 import { DESTROY_CLIENT } from './types';
 import { SEARCH_CLIENT } from './types';
+import { PIN_CODE_VERIFICATION } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
@@ -118,5 +119,25 @@ export const searchClient = (searchTerm) => {
     console.log(searchTerm);
     return async(dispatch) => {
         dispatch({type: SEARCH_CLIENT, payload: searchTerm});
+    }
+}
+
+export const pinCodeVerification = (pincode, _id) => {
+    return async(dispatch) => {
+        const response = await backEnd.post(`clients/verification/${_id}`, {pincode});
+        console.log(response.data.verification_status);
+        // Do i need to dispatch it to the redux store
+        // Currently the start server in the modal isnt, rendering
+        // Could potential be because the redux store hasnt been updated so the client list isnt being
+        // rendered
+        // api request response and checking if response is true or not
+        // response should have all details for the client so we can grab the id
+        // if (!response.verification_status) {
+        //     console.log(`incorrect pin`);
+        //     return null
+        //     //dispatch one for the error perhaps?
+        // }
+
+        // dispatch({type: PIN_CODE_VERIFICATION, payload: response});
     }
 }

@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import ClientVerification from './ClientVerification';
 
 const styles = theme => ({
   root: {
@@ -55,6 +55,12 @@ function SimpleTable(props) {
         }
       }
 
+      const renderVerificationStatus = (client) => {
+        return(
+          <ClientVerification client={client}/>
+        );
+      }
+
     const renderList = () => {
         // console.log(this.props.clientList);
         return clientList.map( client => {
@@ -66,7 +72,8 @@ function SimpleTable(props) {
                         </Button>
                     </TableCell>
                     <TableCell align="center">
-                        {client.verification_status}
+                        {/* {client.verification_status}  */}
+                        {renderVerificationStatus(client)}
                     </TableCell>
                     <TableCell align="center">
                         {renderAccountStatus(client.account_status)}

@@ -5,7 +5,8 @@ import { FETCH_CLIENT_LIST } from '../actions/types'
 import { TOG_CLIENT_STATUS } from '../actions/types'
 import { UPDATE_CLIENT_FILTER } from '../actions/types';
 import { EDIT_CLIENT } from '../actions/types';
-import { DESTROY_CLIENT } from '../actions/types';
+import { DESTROY_CLIENT, PIN_CODE_VERIFICATION } from '../actions/types';
+
 
 // Maybe find the client id and just append it to it?
 
@@ -35,6 +36,8 @@ export default (state = {}, action) => {
             return {...state, [action.payload._id]: action.payload};
         case DESTROY_CLIENT:
             return _.omit(state, action.payload);
+        // case PIN_CODE_VERIFICATION: 
+        //     return {...state, [action.payload.id]: action.payload}
         default:
             return state;
     }   
