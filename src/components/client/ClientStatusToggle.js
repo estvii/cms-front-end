@@ -32,6 +32,7 @@ class ClientStatusToggle extends Component {
     componentDidUpdate(prevProps){
         // console.log('account status component update');
         const client = this.retrieveClient();
+        // console.log(client);
         const { status_type } = this.props;
         const {account_status, server_status} = client;
         
@@ -44,6 +45,7 @@ class ClientStatusToggle extends Component {
                 this.setState({checked: server_status})
             }
         }
+        
     }
 
     handleChange = (checked) => {
@@ -65,6 +67,7 @@ class ClientStatusToggle extends Component {
     }
 
     render() {
+        // console.log(this.state.checked);
         return (
             <div>
                 <label htmlFor="normal switch">                    

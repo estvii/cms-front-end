@@ -13,7 +13,7 @@ class ClientList extends Component {
   }
 
   onSelectClient = client => {
-    console.log("here");
+    // console.log("here");
     this.props.selectClient(client);
   };
 
@@ -21,20 +21,19 @@ class ClientList extends Component {
     // console.log(this.props.selectedClient);
     // console.log(this.props.clientList);
     const { clientList, searchClient } = this.props
-    console.log(this.props);
-    console.log(searchClient);
+    // console.log(this.props);
+    // console.log(searchClient);
     let filteredClients = clientList.filter(
       (client) => {
         if (!searchClient) {
           return clientList;
         }
-        console.log(`here`)
         return client.name.toLowerCase().indexOf(searchClient.toLowerCase()) !== -1; 
       }
     );
 
 
-    console.log(filteredClients);
+    // console.log(filteredClients);
 
     return (
       // <Card>

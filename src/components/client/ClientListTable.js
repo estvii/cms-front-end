@@ -56,9 +56,10 @@ function SimpleTable(props) {
       }
 
       const renderVerificationStatus = (client) => {
-        return(
-          <ClientVerification client={client}/>
-        );
+        if (!client.verification_status) {
+          return <ClientVerification client={client}/>
+        }
+        return <div> ON </div>
       }
 
     const renderList = () => {

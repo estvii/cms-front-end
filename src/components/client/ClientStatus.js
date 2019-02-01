@@ -30,7 +30,17 @@ class ClientStatus extends Component {
 
   renderToggleButtons = () => {
     const client = this.retrieveClient();
-    if (!client.account_status) {
+    if (!client.verification_status) {
+      return (
+        <div>
+          <Switch disabled checked={false} onChange={() => {}}/>
+          <label>Account Status</label>
+          <br/>
+          <Switch disabled checked={false} onChange={() => {}}/>
+          <label>Server Status</label>
+        </div>
+      );
+    } else if (!client.account_status) {
       return (
         <div>
           <ClientStatusToggle status_type="account_status" />

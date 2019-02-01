@@ -36,8 +36,8 @@ export default (state = {}, action) => {
             return {...state, [action.payload._id]: action.payload};
         case DESTROY_CLIENT:
             return _.omit(state, action.payload);
-        // case PIN_CODE_VERIFICATION: 
-        //     return {...state, [action.payload.id]: action.payload}
+        case PIN_CODE_VERIFICATION: 
+            return {...state, [action.payload._id]: action.payload}
         default:
             return state;
     }   

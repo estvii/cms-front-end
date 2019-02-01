@@ -88,7 +88,7 @@ export const toggleClientStatus = (status_name,status,_id) => {
         // console.log('Toggle Action Called');
         // console.log(status_name);
         // console.log(status);
-        // console.log(id);
+        // console.log(_id);
         // if status_name = account_status && status = false  => server_status becomes false ??
     if (status_name === "account_status" && status === false) {
         return async(dispatch) => {
@@ -126,6 +126,12 @@ export const pinCodeVerification = (pincode, _id) => {
     return async(dispatch) => {
         const response = await backEnd.post(`clients/verification/${_id}`, {pincode});
         console.log(response.data.verification_status);
+
+        if (response.data.verification_status === true) {
+            dispatch({ type: PIN_CODE_VERIFICATION, payload: response.data})
+        }
+
+        // console.log('Has been verified or something');
         // Do i need to dispatch it to the redux store
         // Currently the start server in the modal isnt, rendering
         // Could potential be because the redux store hasnt been updated so the client list isnt being

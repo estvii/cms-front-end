@@ -6,7 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import ReactCodeInput from 'react-code-input';
 import { connect } from 'react-redux';
-import { pinCodeVerification } from '../../actions';
+import { pinCodeVerification, toggleClientStatus, resetSelectedClient } from '../../actions';
 // import SnackbarContent from "@material-ui/core/SnackbarContent";
 // import Grid from '@material-ui/core/Grid';
 
@@ -55,6 +55,7 @@ class ClientVerificationModal extends Component {
 
     handleOpen = () => {
         this.setState({ open: true });
+        this.props.resetSelectedClient();
     };
 
     handleClose = () => {
@@ -62,8 +63,6 @@ class ClientVerificationModal extends Component {
     };
 
     onSubmit = () => {
-        // // event.preventDefault();
-        // console.log(this.state.pinCode);
         const { _id } = this.props.client
         this.props.pinCodeVerification(this.state.pinCode, _id)
     } 
@@ -72,31 +71,45 @@ class ClientVerificationModal extends Component {
         this.setState({pinCode: value})
     }
 
+    onStartAccountAndServer = () => {
+        const { _id } = this.props.client
+        this.props.toggleClientStatus('account_status', true, _id);
+        this.props.toggleClientStatus('server_status', true, _id);
+        this.handleClose();
+    }
+
+    renderInputPin = () => {
+        if (this.props.client.verification_status === true) {
+            return <ReactCodeInput fields={6} type="text" disabled/>
+        }
+        return <ReactCodeInput fields={6} type="text" onChange={(value) => this.onChange(value)}/>
+    }
+
     renderVerificationSubmitButton = () => {
-        if (this.state.pinCode.length !== 6) {
-            return (
-                <Button variant="contained" type="submit" disabled >Submit</Button>
-            );
+        if (this.props.client.verification_status === true) {
+            return <Button variant="contained" type="submit" disabled style={{fontSize:'0.8rem', minWidth:'120px'}}>Account Verified</Button>
+        } else if (this.state.pinCode.length !== 6) {
+            return <Button variant="contained" type="submit" disabled >Submit</Button>
         }
         return <Button variant="contained" color="primary" type="submit" value="submit" onClick={this.onSubmit}>Submit</Button>
-    }
+        }
 
     renderStartServerButton = () => {
         if (!this.props.client.verification_status) {
             return <Button variant="contained" color="primary" disabled style={{fontSize:'0.8rem', minWidth:'120px'}}>Start Server</Button>
         }
-        return <Button variant="contained" color="primary" style={{fontSize:'0.8rem', minWidth:'120px'}}>Start Server</Button>
+        return <Button variant="contained" color="primary" onClick={this.onStartAccountAndServer} style={{fontSize:'0.8rem', minWidth:'120px'}}>Start Server</Button>
     }
 
   render() {
     // const { spacing } = this.state;
     const { classes, client } = this.props;
-    console.log(client);
+    // console.log(client);
     // const { handleSubmit, pristine, submitting }= this.props
     // console.log(this.state.pinCode);
     return (
       <div>
-          <Button variant="contained" color="secondary" onClick={this.handleOpen}>
+          <Button variant="contained" onClick={this.handleOpen}>
             Verify
           </Button>
             <Modal
@@ -140,7 +153,7 @@ class ClientVerificationModal extends Component {
                                 </Typography>
                             </div>
                             <div className="column twelve wide">
-                                <ReactCodeInput fields={6} type="text" onChange={(value) => this.onChange(value)}/>
+                                {this.renderInputPin()}
                             </div>
                         </div>
                         <div className="ui row">
@@ -164,4 +177,4 @@ ClientVerificationModal.propTypes = {
 // We need an intermediary variable for handling the recursive nesting.
 const ClientVerification = withStyles(styles)(ClientVerificationModal);
 
-export default connect(null,{ pinCodeVerification })(ClientVerification);
+export default connect(null,{ pinCodeVerification, toggleClientStatus, resetSelectedClient })(ClientVerification);
