@@ -35,6 +35,10 @@ import { withStyles } from "@material-ui/core/styles";
 import NavBarStyles from "./../../assets/styles/Navbar/NavBarStyles";
 import { compose } from "recompose";
 
+const appBarStyle = {
+  color: "#56565b"
+};
+
 class NavBar extends Component {
   state = {
     mobileOpen: false,
@@ -200,14 +204,14 @@ class NavBar extends Component {
             >
               <Menu />
             </IconButton>
-            <IconButton color="inherit" component={Link} to="/">
+            <IconButton color="#56565b" component={Link} to="/">
               <Person />
             </IconButton>
-            <div>{this.totalClients()}</div>
+            <div style={appBarStyle}>{this.totalClients()}</div>
 
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <Search />
+            <div className={classes.search} style={appBarStyle}>
+              <div className={classes.searchIcon} style={appBarStyle}>
+                <Search style={appBarStyle} />
               </div>
               <InputBase
                 placeholder="Search…"
@@ -215,10 +219,11 @@ class NavBar extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
+                style={appBarStyle}
               />
             </div>
 
-            <div>{this.renderSelectedClient()}</div>
+            <div style={appBarStyle}>{this.renderSelectedClient()}</div>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>

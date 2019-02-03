@@ -13,7 +13,7 @@ const NavBarStyles = theme => ({
     }
   },
   appBar: {
-    background: "#1c2566",
+    background: "#ffffff",
     marginLeft: drawerWidth,
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`
@@ -60,7 +60,7 @@ const NavBarStyles = theme => ({
     justifyContent: "center"
   },
   inputRoot: {
-    color: "inherit",
+    color: "#56565b",
     width: "100%"
   },
   icon: {
@@ -75,7 +75,8 @@ const NavBarStyles = theme => ({
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 200
-    }
+    },
+    backgroundColor: "#ededf7"
   }
 });
 
