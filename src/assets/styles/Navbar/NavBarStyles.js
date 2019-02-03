@@ -13,11 +13,16 @@ const NavBarStyles = theme => ({
     }
   },
   appBar: {
-    background: "#1c2566",
+    background: "#ffffff",
     marginLeft: drawerWidth,
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`
     }
+  },
+  selected: {
+    backgroundColor: "white !important",
+    color: "white",
+    fontWeight: 600
   },
   menuButton: {
     marginRight: 20,
@@ -27,7 +32,8 @@ const NavBarStyles = theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    background: "#515072"
   },
   search: {
     position: "relative",
@@ -54,8 +60,11 @@ const NavBarStyles = theme => ({
     justifyContent: "center"
   },
   inputRoot: {
-    color: "inherit",
+    color: "#56565b",
     width: "100%"
+  },
+  icon: {
+    color: "#a6a2ef"
   },
   inputInput: {
     paddingTop: theme.spacing.unit,
@@ -66,7 +75,8 @@ const NavBarStyles = theme => ({
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: 200
-    }
+    },
+    backgroundColor: "#ededf7"
   }
 });
 

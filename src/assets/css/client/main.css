@@ -3,6 +3,10 @@
   margin-top: 70px;
 }
 
+body {
+  background-color: #000;
+}
+
 .client-status {
   margin-top: 90px;
   position: fixed;
@@ -48,6 +52,10 @@
 
 .new-client {
   margin-left: 50px;
+}
+
+.menu-icon {
+  color: #a6a2ef;
 }
 
 /* REPORTS PAGE STYLING */
