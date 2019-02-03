@@ -4,6 +4,7 @@ import _ from "lodash";
 import { resetSelectedClient } from "../../actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
 import {
   AppBar,
   CssBaseline,
@@ -16,7 +17,8 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-  Fab
+  Fab,
+  Typography
 } from "@material-ui/core";
 import {
   Person,
@@ -35,7 +37,8 @@ import { compose } from "recompose";
 
 class NavBar extends Component {
   state = {
-    mobileOpen: false
+    mobileOpen: false,
+    active: false
   };
 
   retrieveClient = () => {
@@ -71,52 +74,104 @@ class NavBar extends Component {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
+  toggleClass = () => {
+    console.log(this.state.active);
+    this.setState({
+      active: true
+    });
+  };
+
   render() {
     const {
       classes,
       location: { pathname }
     } = this.props;
 
+    console.log(this.props);
+
     const drawer = (
       <div>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar}>LOGO</div>
         <Divider />
         <MenuList>
-          <MenuItem component={Link} to="/" selected={"/" === pathname}>
-            <ListItemIcon>
+          <MenuItem
+            component={Link}
+            to="/"
+            selected={"/" === pathname}
+            onclick={this.toggleClass.bind(this)}
+          >
+            <ListItemIcon
+              className={
+                this.props.location.pathname === "/" ? classes.icon : null
+              }
+            >
               <Person />
             </ListItemIcon>
-            <ListItemText primary="Clients" />
+            <ListItemText
+              primary={
+                <Typography style={{ color: "#fafafa" }}>Clients</Typography>
+              }
+            />
           </MenuItem>
           <MenuItem
             component={Link}
             to="/statistics"
             selected={"/statistics" === pathname}
           >
-            <ListItemIcon>
+            <ListItemIcon
+              className={
+                this.props.location.pathname === "/statistics"
+                  ? classes.icon
+                  : null
+              }
+            >
               <BarChart />
             </ListItemIcon>
-            <ListItemText primary="Statistics" />
+            <ListItemText
+              primary={
+                <Typography style={{ color: "#fafafa" }}>Statistics</Typography>
+              }
+            />
           </MenuItem>
           <MenuItem
             component={Link}
             to="/client/filter"
             selected={"/client/filter" === pathname}
           >
-            <ListItemIcon>
+            <ListItemIcon
+              className={
+                this.props.location.pathname === "/client/filter"
+                  ? classes.icon
+                  : null
+              }
+            >
               <SettingsInputComponent />
             </ListItemIcon>
-            <ListItemText primary="Filter" />
+            <ListItemText
+              primary={
+                <Typography style={{ color: "#fafafa" }}>Filter</Typography>
+              }
+            />
           </MenuItem>
           <MenuItem
             component={Link}
             to="/reports"
             selected={"/reports" === pathname}
           >
-            <ListItemIcon>
+            <ListItemIcon
+              className={
+                this.props.location.pathname === "/reports"
+                  ? classes.icon
+                  : null
+              }
+            >
               <Notifications />
             </ListItemIcon>
-            <ListItemText primary="Reports" />
+            <ListItemText
+              primary={
+                <Typography style={{ color: "#fafafa" }}>Reports</Typography>
+              }
+            />
           </MenuItem>
         </MenuList>
         <div className={classes.toolbar} />
@@ -145,7 +200,7 @@ class NavBar extends Component {
             >
               <Menu />
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" component={Link} to="/">
               <Person />
             </IconButton>
             <div>{this.totalClients()}</div>

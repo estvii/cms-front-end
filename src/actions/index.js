@@ -1,6 +1,6 @@
 import backEnd from "../apis/backEnd";
 import history from "../history";
-import { CREATE_CLIENT } from "./types";
+import { CREATE_CLIENT, STORE_MESSAGE } from "./types";
 import { FETCH_CLIENT_LIST } from "./types";
 // import { FETCH_CLIENT } from './types'
 import { SELECT_CLIENT } from "./types";
@@ -9,6 +9,7 @@ import { UPDATE_CLIENT_FILTER } from "./types";
 import { RESET_SELECTED_CLIENT } from "./types";
 import { EDIT_CLIENT } from "./types";
 import { DESTROY_CLIENT } from "./types";
+import { STORE_REPORTS_MESSAGE } from "./types";
 
 const CLIENT_STATUS = {
   verification_status: false,
@@ -116,6 +117,16 @@ export const updateClientFilter = (filterFormValues, _id) => {
     const response = await backEnd.patch(`clients/${_id}`, filterFormValues);
     // console.log(response);
     dispatch({ type: UPDATE_CLIENT_FILTER, payload: response.data });
+    history.push("/");
+  };
+};
+
+export const storeMessage = (message, _id) => {
+  console.log(message);
+  console.log(_id);
+  return async dispatch => {
+    const response = await backEnd.post(`log/${_id}`, message);
+    dispatch({ type: STORE_REPORTS_MESSAGE, payload: response.daata });
     history.push("/");
   };
 };

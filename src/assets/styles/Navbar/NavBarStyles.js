@@ -19,6 +19,11 @@ const NavBarStyles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`
     }
   },
+  selected: {
+    backgroundColor: "white !important",
+    color: "white",
+    fontWeight: 600
+  },
   menuButton: {
     marginRight: 20,
     [theme.breakpoints.up("sm")]: {
@@ -27,7 +32,8 @@ const NavBarStyles = theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    background: "#515072"
   },
   search: {
     position: "relative",
@@ -56,6 +62,9 @@ const NavBarStyles = theme => ({
   inputRoot: {
     color: "inherit",
     width: "100%"
+  },
+  icon: {
+    color: "#a6a2ef"
   },
   inputInput: {
     paddingTop: theme.spacing.unit,

@@ -2,99 +2,84 @@ import React, { Component } from "react";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
+
+import { connect } from "react-redux";
+import { storeMessage, selectClient, fetchClientList } from "./../../actions";
 
 const snackBarStyle = {
   backgroundColor: "#c5cae9",
   margin: "5vh"
 };
 
-// renderTextField = formProps => {
-//   const { input, label } = formProps;
-//   return (
-//     <TextField
-//       id="outlined-multiline-flexible"
-//       label={label}
-//       multiline
-//       margin="normal"
-//       variant="outlined"
-//       {...input}
-//     />
-//   );
-// };
-
 class MessagesForm extends Component {
   state = {
-    messages: "",
-    isSubmitted: false,
-    messagesList: []
+    server_messages: "",
+    serverMessagesList: []
   };
 
   handleMessagesChange = event => {
-    this.setState({ messages: event.target.value });
+    this.setState({ server_messages: event.target.value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const { messages } = this.state;
-    this.setState({ isSubmitted: true });
-
-    console.log(messages);
-    console.log(this.state.messageList);
-  };
+  // onSubmit = formValues => {
+  //   this.props.onSubmit(formValues);
+  // };
 
   addMessages = () => {
-    let list = this.state.messagesList;
+    let list = this.state.serverMessagesList;
     list.push(
-      <SnackbarContent style={snackBarStyle} message={this.state.messages} />
+      <SnackbarContent
+        style={snackBarStyle}
+        message={this.state.server_messages}
+      />
     );
     this.setState({
-      messagesList: list,
-      messages: ""
+      serverMessagesList: list,
+      server_messages: ""
     });
   };
 
-  // renderSendButton = () => {
-  //   if (this.state.messages.length > 0) {
-  //     return (
-  //       <Button
-  //         type="submit"
-  //         value="Submit"
-  //         onClick={this.addMessages}
-  //         color="primary"
-  //         disabled
-  //       >
-  //         SEND
-  //       </Button>
-  //     );
-  //   } else {
-  //     return (
-  //       <Button
-  //         type="submit"
-  //         value="Submit"
-  //         onClick={this.addMessages}
-  //         color="primary"
-  //         disabled={pristine || submitting}
-  //       >
-  //         SEND
-  //       </Button>
-  //     );
-  //   }
-  // };
+  // formHandler(server_messages) {
+  //   axios
+  //     .post(`/log/:id`, server_messages)
+  //     .then(function(response) {
+  //       console.log(response);
+  //       //Perform action based on response
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //       //Perform action based on error
+  //     });
+  // }
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      message: this.state.server_message
+    };
+
+    axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
 
   render() {
-    const { pristine, submitting } = this.props;
+    console.log(this.props);
     return (
       <div>
         <div>
-          <h1>{this.state.messagesList}</h1>
+          <h1>{this.state.serverMessagesList}</h1>
         </div>
         <form onSubmit={this.handleSubmit}>
           <TextField
             type="text"
             value={this.state.value}
-            onChange={this.handleChange}
+            // onChange={this.handleChange}
             label="Leave a message"
-            value={this.state.messages}
+            value={this.state.server_messages}
             onChange={this.handleMessagesChange}
             multiline
             margin="normal"
@@ -103,7 +88,7 @@ class MessagesForm extends Component {
           />
         </form>
         <div>
-          {this.state.messages.length > 0 ? (
+          {this.state.server_messages.length > 0 ? (
             <Button
               type="submit"
               value="Submit"
@@ -123,19 +108,62 @@ class MessagesForm extends Component {
               SEND
             </Button>
           )}
-          {/* <Button
-          type="submit"
-          value="Submit"
-          onClick={this.addMessages}
-          color="primary"
-          disabled={pristine || submitting}
-        >
-          SEND
-        </Button> */}
         </div>
       </div>
     );
   }
 }
 
-export default MessagesForm;
+// export default MessagesForm;
+
+const mapStateToProps = state => {
+  return {
+    selectedClient: state.selectedClient,
+    clientList: Object.values(state.clients)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { storeMessage, selectClient, fetchClientList }
+)(MessagesForm);
+
+// import React, { Component } from "react";
+// import axios from "axios";
+
+// class MessageForm extends Component {
+//   state = {
+//     server_message: ""
+//   };
+
+//   handleChange = event => {
+//     this.setState({ server_message: event.target.value });
+//   };
+
+//   handleSubmit = event => {
+//     event.preventDefault();
+
+//     const user = {
+//       message: this.state.server_message
+//     };
+
+//     axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
+//       console.log(res);
+//       console.log(res.data);
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label>
+//           Message
+//           <input type="text" name="message" onChange={this.handleChange} />
+//         </label>
+//         <button type="submit">Send</button>
+//       </form>
+//     );
+//   }
+// }
+
+// export default MessageForm;
