@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { Provider } from 'react-redux';
-import store from './store';
+import Root from './Root';
 
 import App from './components/App';
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Root>
         <App/>
-    </Provider>,
+    </Root>,
     document.querySelector("#root")
 )
 
+// Wrap 
+//  <Root>
+//      <Router>
+//          <App/>
+//      <Router/>
+//<Root> Memory router? for testing

@@ -87,7 +87,7 @@ class NavBar extends Component {
         <div className={classes.toolbar} />
         <Divider />
         <MenuList>
-          <MenuItem component={Link} to="/" selected={"/" === pathname}>
+          <MenuItem component={Link} to="/" selected={"/" === pathname} className="__test__root">
             <ListItemIcon>
               <Person />
             </ListItemIcon>

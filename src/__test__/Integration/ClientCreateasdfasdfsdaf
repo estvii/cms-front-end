@@ -1,0 +1,24 @@
+import React from 'react';
+import { mount } from 'enzyme';
+import moxios from 'moxios';
+import Root from '../../Root';
+import ClientCreate from '../../components/client/ClientCreate';
+
+// Creates user
+
+beforeEach(()=> {
+    moxios.install();
+});
+
+afterEach(() => {
+    moxios.uninstall();
+});
+
+it('can create a client' , (done) => {
+    const wrapped = mount(
+        <Root>
+            <App/>
+        </Root>
+    )
+    console.log(wrapped);
+})

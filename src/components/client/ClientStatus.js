@@ -58,11 +58,12 @@ class ClientStatus extends Component {
   };
 
   render() {
+    console.log(this.props.selectedClient);
     if (_.isEmpty(this.props.selectedClient)) {
       return <div className="client-status">Please Select Client</div>;
     }
+    console.log(this.props.clientList);
     const client = this.retrieveClient();
-    // console.log(client);
     this.renderToggleButtons();
     return (
       <div className="client-status">

@@ -1,0 +1,48 @@
+// import React from 'react';
+// import { mount } from 'enzyme';
+// import moxios from 'moxios';
+// import Root from '../../Root';
+// import App from '../../components/App';
+
+
+// // Attempt to render the entire app
+// // Find the fetch comments button and click it
+// // Expect to find a list of comments!
+
+// beforeEach(()=> {
+//     moxios.install();
+//     moxios.stubRequest('http://localhost:3000/clients', {
+//         status: 200,
+//         response: [{name: 'Client #1'}, {name: 'Client #2'}]
+//     });
+// });
+
+// afterEach(() => {
+//     moxios.uninstall();
+// });
+
+// it('can fetch a list of clients' , (done) => {
+//     const wrapped = mount(
+//         <Root>
+//             <App/>
+//         </Root>
+//     )
+//     console.log(wrapped);
+// })
+
+
+//Version Two
+// test('can fetch a list of clients', (done) => {
+//     moxios.install()
+//     moxios.stubRequest('http://localhost:3000/clients,', {
+//         status: 304,
+//         response: [{name: 'client #1'}, {name: 'client #2'}]     
+//     });
+
+//     moxios.wait(() => {
+//         wrapped.update();
+//         expect(wrapped.find('button').length).toEqual(2);
+//         done();
+//         moxios.uninstall()
+//     });
+// });
