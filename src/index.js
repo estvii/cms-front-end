@@ -1,8 +1,9 @@
+import dotenv from 'dotenv' 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './Root';
-
 import App from "./components/App";
+dotenv.config()
 
 ReactDOM.render(
     <Root>
