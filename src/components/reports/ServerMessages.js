@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { TextField, Button, Paper, List } from "@material-ui/core";
 
 import { connect } from "react-redux";
-import { storeMessage, selectClient, fetchClientList } from "./../../actions";
+import {
+  storeMessage,
+  selectClient,
+  fetchClientList,
+  fetchServerMessage
+} from "./../../actions";
 
 const snackBarStyle = {
   backgroundColor: "#c5cae9",
@@ -16,6 +20,10 @@ class MessagesForm extends Component {
     server_messages: "",
     serverMessagesList: []
   };
+
+  componentDidMount() {
+    this.props.fetchServerMessage();
+  }
 
   handleMessagesChange = event => {
     this.setState({ server_messages: event.target.value });
@@ -40,45 +48,16 @@ class MessagesForm extends Component {
     });
   };
 
-  // onSubmit = formValues => {
-  //   this.props.onSubmit(formValues);
-  // };
-
-  // formHandler(server_messages) {
-  //   axios
-  //     .post(`/log/:id`, server_messages)
-  //     .then(function(response) {
-  //       console.log(response);
-  //       //Perform action based on response
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //       //Perform action based on error
-  //     });
-  // }
-
-  // handleSubmit = event => {
-  //   console.log("here");
-  //   event.preventDefault();
-  //   const { _id } = this.props.selectedClient;
-  //   console.log(_id);
-  //   const user = {
-  //     message: this.state.server_message
-  //   };
-
-  //   this.props.storeMessages(user.message, _id);
-  //   axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
-  //     console.log(res);
-  //     console.log(res.data);
-  //   });
-  // };
-
   render() {
     // console.log(this.props);
     return (
       <div>
         <div>
-          <h1>{this.state.serverMessagesList}</h1>
+          <Paper style={{ maxHeight: 400, overflow: "auto" }}>
+            <List>
+              <h1>{this.state.serverMessagesList}</h1>
+            </List>
+          </Paper>
         </div>
         <form onSubmit={this.addMessages}>
           <TextField
@@ -128,5 +107,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { storeMessage, selectClient, fetchClientList }
+  { storeMessage, selectClient, fetchClientList, fetchServerMessage }
 )(MessagesForm);

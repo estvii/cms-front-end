@@ -11,7 +11,8 @@ import { EDIT_CLIENT } from "./types";
 import { DESTROY_CLIENT } from "./types";
 import { SEARCH_CLIENT } from "./types";
 import { PIN_CODE_VERIFICATION } from "./types";
-import { STORE_REPORTS_MESSAGE } from "./types";
+import { STORE_SERVER_MESSAGE } from "./types";
+import { FETCH_SERVER_MESSAGES } from "./types";
 
 const CLIENT_STATUS = {
   verification_status: false,
@@ -176,7 +177,15 @@ export const storeMessage = (server_message, _id) => {
   return async dispatch => {
     const response = await backEnd.post(`/log/`, { server_message, client });
     console.log(response);
-    dispatch({ type: STORE_REPORTS_MESSAGE, payload: response.data });
+    dispatch({ type: STORE_SERVER_MESSAGE, payload: response.data });
     history.push("/");
+  };
+};
+
+export const fetchServerMessage = () => {
+  return async dispatch => {
+    const response = await backEnd.get(`/log/`);
+    console.log(response);
+    dispatch({ type: FETCH_SERVER_MESSAGES, payload: response.data });
   };
 };
