@@ -10,7 +10,6 @@ import { RESET_SELECTED_CLIENT } from './types';
 import { EDIT_CLIENT } from './types';
 import { DESTROY_CLIENT } from './types';
 import { SEARCH_CLIENT } from './types';
-import { PIN_CODE_VERIFICATION } from './types';
 
 const CLIENT_STATUS = {
     verification_status: false,
