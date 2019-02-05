@@ -42,12 +42,11 @@ const appBarStyle = {
 class NavBar extends Component {
   state = {
     mobileOpen: false,
-    active: false
+    active: false,
   };
 
   retrieveClient = () => {
     const { _id } = this.props.selectedClient;
-    // console.log(this.props)
     return _.find(this.props.clientList, { _id });
   };
 
@@ -70,6 +69,7 @@ class NavBar extends Component {
     this.props.resetSelectedClient();
   };
 
+  
   totalClients = () => {
     return this.props.clientList.length;
   };
@@ -84,19 +84,20 @@ class NavBar extends Component {
   };
 
   toggleClass = () => {
-    console.log(this.state.active);
+    // console.log(this.state.active);
     this.setState({
       active: true
     });
   };
 
   render() {
+    console.log(this.props.selectedClient);
     const {
       classes,
       location: { pathname }
     } = this.props;
 
-    console.log(this.props);
+    // console.log(this.props);
 
     const drawer = (
       <div>
@@ -122,7 +123,8 @@ class NavBar extends Component {
               }
             />
           </MenuItem>
-          <MenuItem
+  
+          {_.isEmpty(this.props.selectedClient) || <MenuItem
             component={Link}
             to="/statistics"
             selected={"/statistics" === pathname}
@@ -141,8 +143,9 @@ class NavBar extends Component {
                 <Typography style={{ color: "#fafafa" }}>Statistics</Typography>
               }
             />
-          </MenuItem>
-          <MenuItem
+          </MenuItem>}
+
+          {_.isEmpty(this.props.selectedClient) || <MenuItem
             component={Link}
             to="/client/filter"
             selected={"/client/filter" === pathname}
@@ -161,8 +164,9 @@ class NavBar extends Component {
                 <Typography style={{ color: "#fafafa" }}>Filter</Typography>
               }
             />
-          </MenuItem>
-          <MenuItem
+          </MenuItem>}
+
+          {_.isEmpty(this.props.selectedClient) || <MenuItem
             component={Link}
             to="/reports"
             selected={"/reports" === pathname}
@@ -181,7 +185,7 @@ class NavBar extends Component {
                 <Typography style={{ color: "#fafafa" }}>Reports</Typography>
               }
             />
-          </MenuItem>
+          </MenuItem>}
         </MenuList>
         <div className={classes.toolbar} />
         <div className={classes.toolbar} />

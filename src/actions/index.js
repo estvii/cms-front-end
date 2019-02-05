@@ -83,6 +83,7 @@ export const selectClient = selectedClient => {
 export const resetSelectedClient = () => {
   return async dispatch => {
     dispatch({ type: RESET_SELECTED_CLIENT });
+    history.push('/');
   };
 };
 
