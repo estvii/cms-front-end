@@ -104,7 +104,7 @@ class ClientVerificationModal extends Component {
   render() {
     // const { spacing } = this.state;
     const { classes, client } = this.props;
-    console.log(this.state.pinResponse);
+    // console.log(this.state.pinResponse);
     // console.log(client);
     // const { handleSubmit, pristine, submitting }= this.props
     // console.log(this.state.pinInputCode);

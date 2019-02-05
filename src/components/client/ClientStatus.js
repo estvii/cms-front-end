@@ -13,7 +13,7 @@ import { CardContent, Card } from "@material-ui/core";
 
 class ClientStatus extends Component {
   onSubmit = formValues => {
-    console.log(formValues);
+    // console.log(formValues);
     const { _id } = this.props.selectedClient;
     this.props.editClient(_id, formValues);
   };
@@ -58,11 +58,12 @@ class ClientStatus extends Component {
   };
 
   render() {
+    // console.log(this.props.selectedClient);
     if (_.isEmpty(this.props.selectedClient)) {
       return <div className="client-status">Please Select Client</div>;
     }
+    // console.log(this.props.clientList);
     const client = this.retrieveClient();
-    // console.log(client);
     this.renderToggleButtons();
     return (
       <div className="client-status">

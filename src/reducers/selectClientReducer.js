@@ -8,12 +8,15 @@ import {
 export default(selectedClient = {}, action) => {
     const _id = '_id';
     switch(action.type) {
-        case SELECT_CLIENT || CREATE_CLIENT:
-            return {...selectedClient, [_id]: action.payload._id}
-        case RESET_SELECTED_CLIENT || DESTROY_CLIENT: 
+        case SELECT_CLIENT:
+            return {...selectedClient, [_id]: action.payload._id};
+        case CREATE_CLIENT:
+            return {...selectedClient, [_id]: action.payload._id};
+        case RESET_SELECTED_CLIENT: 
             return selectedClient = {};
-            // return _.omit(selected)
+        case DESTROY_CLIENT:   
+            return selectedClient = {};
         default:
-            return selectedClient
+            return selectedClient;
     }
 }

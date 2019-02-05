@@ -1,0 +1,57 @@
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import Root from '../../Root';
+import App from '../../components/App';
+import NavBar from "../../components/layout/NavBar";
+import ClientCreate from "../../components/client/ClientCreate";
+import ClientFilter from "../../components/client/ClientFilter";
+import ClientList from "../../components/client/ClientList";
+import ClientStatus from "../../components/client/ClientStatus";
+import Statistics from "../../components/statistics/cards/Statistics";
+import Reports from "../../components/reports/Reports";
+
+// Navigation of the Navbar
+
+let wrapped;
+
+beforeEach(() => {
+    wrapped = mount(
+        <Root>
+            <App/>
+        </Root>
+    )
+})
+
+it('navbar component exist',() => {
+    expect(wrapped.find(NavBar).length).toEqual(1);
+    console.log(wrapped.find(NavBar));
+});
+
+it('Client List component exist', () => {
+    expect(wrapped.find(ClientList).length).toEqual(1);
+    console.log(wrapped.find(ClientList));
+});
+
+it('Client Status component exist', () => {
+    expect(wrapped.find(ClientStatus).length).toEqual(1);
+});
+
+// it('Client Create component exist', () => {
+//     // expect(wrapped.find(ClientCreate).length).toEqual(1);
+//     wrapped.find('.__test__root').at(0).simulate('click');
+//     wrapped.update();
+//     console.log(wrapped.find(ClientCreate).debug());
+//     expect(wrapped.find(ClientCreate).length).toEqual(1);    
+// });
+
+// it('Client Filter comp onent exist', () => {
+//     expect(wrapped.find(ClientFilter).length).toEqual(1);
+// });
+
+// it('Statistics component exist', () => {
+//     expect(wrapped.find(Statistics).length).toEqual(1);
+// });
+
+// it('Reports component exist', () => {
+//     expect(wrapped.find(Reports).length).toEqual(1);
+// });

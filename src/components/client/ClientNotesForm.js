@@ -26,7 +26,7 @@ class ClientNotesForm extends Component {
 
     render() {
         const { handleSubmit, pristine, submitting }= this.props
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <div>
                 <form onSubmit={handleSubmit(this.onSubmit)}>       

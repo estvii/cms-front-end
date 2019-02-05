@@ -63,12 +63,13 @@ function SimpleTable(props) {
       }
 
     const renderList = () => {
-        // console.log(this.props.clientList);
+        // console.log(props.clientList);
         return clientList.map( client => {
+          // console.log(client);
             return (
                 <TableRow key={client._id}>
                     <TableCell component="th" scope="row">
-                        <Button className={classes.button} onClick={()=>onSelectClient(client)}>
+                        <Button className={classes.button} __test__='client-select-button' onClick={()=>onSelectClient(client)}>
                             {client.name}
                         </Button>
                     </TableCell>
