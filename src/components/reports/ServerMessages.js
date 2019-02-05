@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
 
 import { connect } from "react-redux";
 import { storeMessage, selectClient, fetchClientList } from "./../../actions";
@@ -22,11 +21,8 @@ class MessagesForm extends Component {
     this.setState({ server_messages: event.target.value });
   };
 
-  // onSubmit = formValues => {
-  //   this.props.onSubmit(formValues);
-  // };
-
   addMessages = () => {
+    console.log("here");
     let list = this.state.serverMessagesList;
     list.push(
       <SnackbarContent
@@ -34,11 +30,19 @@ class MessagesForm extends Component {
         message={this.state.server_messages}
       />
     );
+    const { _id } = this.props.selectedClient;
+
+    this.props.storeMessage(this.state.server_messages, _id);
+
     this.setState({
       serverMessagesList: list,
       server_messages: ""
     });
   };
+
+  // onSubmit = formValues => {
+  //   this.props.onSubmit(formValues);
+  // };
 
   // formHandler(server_messages) {
   //   axios
@@ -53,68 +57,67 @@ class MessagesForm extends Component {
   //     });
   // }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  // handleSubmit = event => {
+  //   console.log("here");
+  //   event.preventDefault();
+  //   const { _id } = this.props.selectedClient;
+  //   console.log(_id);
+  //   const user = {
+  //     message: this.state.server_message
+  //   };
 
-    const user = {
-      message: this.state.server_message
-    };
-
-    axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
-  };
+  //   this.props.storeMessages(user.message, _id);
+  //   axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //   });
+  // };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <div>
           <h1>{this.state.serverMessagesList}</h1>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.addMessages}>
           <TextField
             type="text"
-            value={this.state.value}
-            // onChange={this.handleChange}
             label="Leave a message"
             value={this.state.server_messages}
             onChange={this.handleMessagesChange}
             multiline
             margin="normal"
             variant="outlined"
-            autocomplete="off"
+            autoComplete="off"
           />
+          <div>
+            {this.state.server_messages.length > 0 ? (
+              <Button
+                type="submit"
+                value="Submit"
+                onClick={this.addMessages}
+                color="primary"
+              >
+                SEND
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                value="Submit"
+                onClick={this.addMessages}
+                color="primary"
+                disabled
+              >
+                SEND
+              </Button>
+            )}
+          </div>
         </form>
-        <div>
-          {this.state.server_messages.length > 0 ? (
-            <Button
-              type="submit"
-              value="Submit"
-              onClick={this.addMessages}
-              color="primary"
-            >
-              SEND
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              value="Submit"
-              onClick={this.addMessages}
-              color="primary"
-              disabled
-            >
-              SEND
-            </Button>
-          )}
-        </div>
       </div>
     );
   }
 }
-
-// export default MessagesForm;
 
 const mapStateToProps = state => {
   return {
@@ -127,43 +130,3 @@ export default connect(
   mapStateToProps,
   { storeMessage, selectClient, fetchClientList }
 )(MessagesForm);
-
-// import React, { Component } from "react";
-// import axios from "axios";
-
-// class MessageForm extends Component {
-//   state = {
-//     server_message: ""
-//   };
-
-//   handleChange = event => {
-//     this.setState({ server_message: event.target.value });
-//   };
-
-//   handleSubmit = event => {
-//     event.preventDefault();
-
-//     const user = {
-//       message: this.state.server_message
-//     };
-
-//     axios.post(`http://localhost:3000/log/:id`, { user }).then(res => {
-//       console.log(res);
-//       console.log(res.data);
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <label>
-//           Message
-//           <input type="text" name="message" onChange={this.handleChange} />
-//         </label>
-//         <button type="submit">Send</button>
-//       </form>
-//     );
-//   }
-// }
-
-// export default MessageForm;

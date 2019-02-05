@@ -28,7 +28,8 @@ const NavBarStyles = theme => ({
     marginRight: 20,
     [theme.breakpoints.up("sm")]: {
       display: "none"
-    }
+    },
+    color: "black"
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
