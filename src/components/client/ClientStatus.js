@@ -76,7 +76,6 @@ class ClientStatus extends Component {
               <br />
               Email: {client.email}
               <br />
-              <br />
             </div>
             <div>
               <ClientNotesForm
