@@ -18,7 +18,7 @@ const styles = theme => ({
     overflowX: 'auto',
   },
   table: {
-    // minWidth: 500, default value is 700
+    minWidth: 600, //default value is 700
   },
   button: {
     margin: theme.spacing.unit,
@@ -89,7 +89,7 @@ function SimpleTable(props) {
     }
 
   return (
-    <Paper className={classes.root}  style={{ width: 500 }}>
+    <Paper className={classes.root}  style={{ width: 640 }}>
         <Typography variant="h6">
             Clients
           </Typography>

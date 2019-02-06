@@ -1,17 +1,19 @@
 import axios from "axios";
+import { store } from './../Root';
 
-export default axios.create({
+const backEnd =  axios.create({
   baseURL: process.env.REACT_APP_API_URI
-  // "http://localhost:3000"
-  // headers: {
-  //   'Authorization': 'Bearer'
-  // },
 });
 
-// axios.post("/clients")
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err));
+backEnd.interceptors.request.use(function(config){
+  const state = store.getState();
+  const token = state.auth.token;
 
-// axios.get("/clients")
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err))
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`
+  }
+
+  return config
+})
+
+export default backEnd

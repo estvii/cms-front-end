@@ -4,6 +4,7 @@ import _ from "lodash";
 import { resetSelectedClient, searchClient } from "../../actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Button from '@material-ui/core/Button';
 
 import {
   AppBar,
@@ -234,6 +235,16 @@ class NavBar extends Component {
             </div>
 
             <div style={appBarStyle}>{this.renderSelectedClient()}</div>
+
+            <div style={{position: 'absolute', right: 0}}>
+              <Link to="/logout"> 
+                <Button  className={classes.button}>
+                  Logout
+                </Button>
+              </Link>
+            </div>
+
+
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
