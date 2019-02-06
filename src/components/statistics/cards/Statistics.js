@@ -45,7 +45,7 @@ class Statistics extends Component {
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(255,255,255, 1)",
             pointHoverBorderColor: "rgba(123, 239, 178, 1)",
-            data: [1112, 2000, 3000, 3500, 2500, 2000, 3000]
+            data: [111, 200, 300, 350, 250, 200, 300]
           },
           {
             label: "Replies",
@@ -60,7 +60,7 @@ class Statistics extends Component {
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(255,255,255, 1)",
             pointHoverBorderColor: "rgba(159, 90, 253, 1)",
-            data: [1000, 1456, 2666, 3000, 4000, 3000, 1200]
+            data: [100, 145, 266, 300, 400, 300, 120]
           },
           {
             label: "Connections made",
@@ -74,7 +74,7 @@ class Statistics extends Component {
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(255,255,255, 1)",
             pointHoverBorderColor: "rgba(0, 181, 204, 1)",
-            data: [1500, 2400, 4400, 1200, 2000, 3444, 2000]
+            data: [150, 240, 440, 120, 200, 344, 200]
           }
         ]
       },

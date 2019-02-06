@@ -7,8 +7,8 @@ import ServerReports from "./ServerReports";
 import MessagesForm from "./ServerMessages";
 
 const reportsForms = [
-  { title: "Server Reports", body: <ServerReports /> },
-  { title: "Messages", body: <MessagesForm /> }
+  { title: "Messages", body: <MessagesForm /> },
+  { title: "Server Reports", body: <ServerReports /> }
 ];
 
 const getTabs = () => {

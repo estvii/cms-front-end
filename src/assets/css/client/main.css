@@ -58,4 +58,10 @@ body {
   color: #a6a2ef;
 }
 
-/* REPORTS PAGE STYLING */
+/* Statistics page media queries */
+
+/* @media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+} */

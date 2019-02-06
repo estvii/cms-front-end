@@ -11,7 +11,9 @@ import { EDIT_CLIENT } from "./types";
 import { DESTROY_CLIENT } from "./types";
 import { SEARCH_CLIENT } from "./types";
 import { PIN_CODE_VERIFICATION } from "./types";
-import { STORE_REPORTS_MESSAGE } from "./types";
+import { STORE_SERVER_MESSAGE } from "./types";
+import { FETCH_SERVER_MESSAGES } from "./types";
+import { RESET_FETCHED_SERVER_MESSAGES } from './types';
 
 const CLIENT_STATUS = {
   verification_status: false,
@@ -159,12 +161,39 @@ export const pinCodeVerification = (pincode, _id) => {
 
 // dispatch({type: PIN_CODE_VERIFICATION, payload: response});
 
-export const storeMessage = (message, _id) => {
-  console.log(message);
-  console.log(_id);
+export const storeMessage = (server_message, _id) => {
+  console.log("the text message, ", server_message);
+  // const _id = "5c4f8d3b01bb4407da1b37d0";
+  // const server_message = {
+  //   server_message: message
+  // };
+  // axios
+  //   .post(`log/${_id}`, server_message)
+  //   .then(response => {
+  //     console.log(response);
+  //     console.log("data saved successfully");
+  //   })
+  //   .catch(err => console.log(err));
+
+  const client = _id;
   return async dispatch => {
-    const response = await backEnd.post(`log/${_id}`, message);
-    dispatch({ type: STORE_REPORTS_MESSAGE, payload: response.daata });
-    history.push("/");
+    const response = await backEnd.post('/log', { server_message, client });
+    console.log(response);
+    dispatch({ type: STORE_SERVER_MESSAGE, payload: response.data });
   };
 };
+
+export const fetchServerMessage = (_id) => {
+  return async dispatch => {
+    console.log(`fetcherSErver action ${_id}`);
+    const response = await backEnd.get(`/log/${_id}`);
+    console.log(response);
+    dispatch({ type: FETCH_SERVER_MESSAGES, payload: response.data });
+  };
+};
+
+export const resetFetchedServerMesssage = () => {
+  return async dispatch => {
+    dispatch({type: RESET_FETCHED_SERVER_MESSAGES})
+  }
+}

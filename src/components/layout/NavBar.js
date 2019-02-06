@@ -74,10 +74,10 @@ class NavBar extends Component {
     return this.props.clientList.length;
   };
 
-  onChange = (e) => {
+  onChange = e => {
     // console.log(`call an action and update reducer ${e}`);
-    this.props.searchClient(e)
-  }
+    this.props.searchClient(e);
+  };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -101,7 +101,7 @@ class NavBar extends Component {
 
     const drawer = (
       <div>
-        <div className={classes.toolbar}>LOGO</div>
+        <div className={classes.toolbar} />
         <Divider />
         <MenuList>
           <MenuItem
@@ -161,7 +161,7 @@ class NavBar extends Component {
             </ListItemIcon>
             <ListItemText
               primary={
-                <Typography style={{ color: "#fafafa" }}>Filter</Typography>
+                <Typography style={{ color: "#fafafa" }}>Filters</Typography>
               }
             />
           </MenuItem>}
@@ -224,7 +224,7 @@ class NavBar extends Component {
               </div>
               <InputBase
                 placeholder="Search…"
-                onChange={(e) => this.onChange(e.target.value)}
+                onChange={e => this.onChange(e.target.value)}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
@@ -285,8 +285,7 @@ const navBarWrapper = compose(
 )(NavBar);
 export default connect(
   mapStateToProps,
-  { resetSelectedClient,
-    searchClient }
+  { resetSelectedClient, searchClient }
 )(navBarWrapper);
 
 // const navBarWrapper =  withStyles(NavBarStyles)(NavBar);
