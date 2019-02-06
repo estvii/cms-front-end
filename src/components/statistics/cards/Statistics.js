@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -143,36 +142,16 @@ class Statistics extends Component {
     }));
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get(
-  //       `https://qrng.anu.edu.au/API/jsonI.php?length=7&type=uint16
-  //   `
-  //     )
-  //     .then(response => {
-  //       console.log(response.data.data);
-  //       let dailyDataCopy = JSON.parse(
-  //         JSON.stringify(this.state.dailyDataLine)
-  //       );
-  //       dailyDataCopy.datasets[0].data = this.setState({
-  //         dailyDataLine: response.data.data
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
-
   render() {
     // console.log(this.state);
 
     return (
       <div className="statistics-card">
-        <Grid container spacing={12} justify="space-evenly">
+        <Grid container spacing={16} justify="space-evenly">
           <Grid item xs={12} sm={9}>
             <Card>
               <CardContent>
-                <Grid container spacing={12}>
+                <Grid container spacing={16}>
                   <Grid item xs={6}>
                     <h3>Statistics</h3>
                   </Grid>
@@ -193,13 +172,15 @@ class Statistics extends Component {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={2} alignItems="center">
-            {this.state.showComponent ? (
-              <SmallDailyCardStats data={this.state} />
-            ) : (
-              <SmallMonthlyCardStats data={this.state} />
-            )}
-          </Grid>
+          <div className="small-stats-card">
+            <Grid item xs={12} sm={2}>
+              {this.state.showComponent ? (
+                <SmallDailyCardStats data={this.state} />
+              ) : (
+                <SmallMonthlyCardStats data={this.state} />
+              )}
+            </Grid>
+          </div>
         </Grid>
       </div>
     );

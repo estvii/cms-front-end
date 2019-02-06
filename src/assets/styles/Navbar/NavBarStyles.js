@@ -1,6 +1,7 @@
 import { fade } from "@material-ui/core/styles/colorManipulator";
 
 const drawerWidth = 240;
+const mobileDrawerWidth = 140;
 
 const NavBarStyles = theme => ({
   root: {
@@ -8,7 +9,7 @@ const NavBarStyles = theme => ({
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
+      width: mobileDrawerWidth,
       flexShrink: 0
     }
   },

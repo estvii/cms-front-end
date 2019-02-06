@@ -107,7 +107,7 @@ class NavBar extends Component {
             component={Link}
             to="/"
             selected={"/" === pathname}
-            onclick={this.toggleClass.bind(this)}
+            onClick={this.toggleClass.bind(this)}
           >
             <ListItemIcon
               className={
@@ -209,7 +209,7 @@ class NavBar extends Component {
             >
               <Menu />
             </IconButton>
-            <IconButton color="#56565b" component={Link} to="/">
+            <IconButton component={Link} to="/">
               <Person />
             </IconButton>
             <div style={appBarStyle}>{this.totalClients()}</div>
@@ -263,11 +263,6 @@ class NavBar extends Component {
   }
 }
 
-NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  container: PropTypes.object
-};
-
 const mapStateToProps = state => {
   return {
     selectedClient: state.selectedClient,
@@ -283,11 +278,3 @@ export default connect(
   mapStateToProps,
   { resetSelectedClient, searchClient }
 )(navBarWrapper);
-
-// const navBarWrapper =  withStyles(NavBarStyles)(NavBar);
-// export default connect(mapStateToProps, { resetSelectedClient })(navBarWrapper)
-
-// export default compose(
-//   withRouter,
-//   withStyles(NavBarStyles)
-// )(NavBar);

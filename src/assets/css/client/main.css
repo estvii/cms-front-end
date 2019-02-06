@@ -3,23 +3,25 @@
   margin-top: 70px;
 }
 
-body {
-  background-color: #000;
-}
-
 .client-status {
   margin-top: 90px;
   position: fixed;
   margin-left: 10vw;
 }
 
-@media screen and (max-width: 600px) {
-  .body {
-    margin-left: 135px;
-  }
+.large-card {
+  margin-left: 260px;
+  margin-top: 90px;
+  margin-right: 20px;
 }
 
-.large-card {
+.filter-card {
+  margin-left: 260px;
+  margin-top: 90px;
+  margin-right: 20px;
+}
+
+.reports-card {
   margin-left: 260px;
   margin-top: 90px;
   margin-right: 20px;
@@ -44,12 +46,6 @@ body {
   width: 113%;
 }
 
-@media screen and (max-width: 600px) {
-  .large-card {
-    margin-left: 110px;
-  }
-}
-
 .new-client {
   margin-left: 50px;
 }
@@ -58,10 +54,201 @@ body {
   color: #a6a2ef;
 }
 
-/* Statistics page media queries */
+/*----------------------- MEDIA QUERIES --------------------------- */
 
-/* @media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
+@media screen and (max-width: 768px) {
+  /* clientlist table*/
+
+  .grid-card {
+    margin-left: 230px;
+    margin-top: 90px;
+    margin-right: 24px;
   }
-} */
+
+  .client-status {
+    margin-top: 50vh;
+    position: fixed;
+    margin-left: 10vw;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .large-card {
+    margin-left: 130px;
+    margin-top: 90px;
+    width: 100px;
+    overflow: "auto";
+  }
+  .statistics-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    /* margin-right: 20px; */
+    width: 280px;
+    overflow: "auto";
+  }
+
+  .reports-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 370px;
+  }
+
+  .filter-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 370px;
+  }
+
+  /* clientlist table*/
+
+  .grid-card {
+    margin-left: 10px;
+    margin-top: 90px;
+    width: 100px;
+    height: 200px;
+    overflow: "auto";
+  }
+
+  .client-status {
+    margin-top: 50vh;
+    position: fixed;
+    margin-left: 10vw;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .large-card {
+    margin-left: 130px;
+    margin-top: 90px;
+    width: 100px;
+    overflow: "auto";
+  }
+  .statistics-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    /* margin-right: 20px; */
+    width: 280px;
+    overflow: "auto";
+  }
+
+  .reports-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 335px;
+  }
+
+  .filter-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 335px;
+  }
+
+  /* clientlist table*/
+
+  .grid-card {
+    margin-left: 10px;
+    margin-top: 90px;
+    width: 100px;
+    height: 200px;
+    overflow: "auto";
+  }
+
+  .client-status {
+    margin-top: 50vh;
+    position: fixed;
+    margin-left: 10vw;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .large-card {
+    margin-left: 130px;
+    margin-top: 90px;
+    width: 100px;
+    overflow: "auto";
+  }
+  .statistics-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    /* margin-right: 20px; */
+    width: 280px;
+    overflow: "auto";
+  }
+
+  .reports-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 320px;
+  }
+
+  .filter-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 320px;
+  }
+
+  /* clientlist table*/
+
+  .grid-card {
+    margin-left: 10px;
+    margin-top: 90px;
+    width: 100px;
+    height: 200px;
+    overflow: "auto";
+  }
+
+  .client-status {
+    margin-top: 50vh;
+    position: fixed;
+    margin-left: 10vw;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .large-card {
+    margin-left: 130px;
+    margin-top: 90px;
+    width: 100px;
+    overflow: "auto";
+  }
+  .statistics-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    /* margin-right: 20px; */
+    width: 280px;
+    overflow: "auto";
+  }
+
+  .reports-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 280px;
+  }
+
+  .filter-card {
+    margin-left: 20px;
+    margin-top: 90px;
+    width: 280px;
+  }
+
+  /* clientlist table*/
+
+  .grid-card {
+    margin-left: 10px;
+    margin-top: 90px;
+    width: 100px;
+    height: 200px;
+    overflow: "auto";
+  }
+
+  .client-status {
+    margin-top: 50vh;
+    position: fixed;
+    margin-left: 10vw;
+    width: 100px;
+  }
+}

@@ -24,7 +24,7 @@ const getTabs = () => {
 class Reports extends Component {
   render() {
     return (
-      <div className="grid-card">
+      <div className="reports-card">
         <Card>
           <CardContent>
             <Tabs items={getTabs()} />

@@ -46,7 +46,7 @@ class ClientFilter extends Component {
     // console.log(this.props.selectedClient)
     // console.log(this.props);
     return (
-      <div className="large-card">
+      <div className="filter-card">
         <Card>
           <CardContent>
             <h1>Filters</h1>

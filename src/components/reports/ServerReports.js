@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 
 const snackBarStyle = {
@@ -30,9 +29,5 @@ class ServerReports extends Component {
     );
   }
 }
-
-ServerReports.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default ServerReports;

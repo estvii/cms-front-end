@@ -91,16 +91,4 @@ class SmallMonthlyCardStats extends Component {
   }
 }
 
-// averageMonthlyInvites() {
-//   this.props.data.monthlyDataLine.datasets[0].data[0];
-// }
-
-// averageMonthlyReplies() {
-//   this.props.data.monthlyDataLine.datasets[1].data[1];
-// }
-
-// averageMonthlyReplies() {
-//   this.props.data.monthlyDataLine.datasets[2].data[1];
-// }
-
 export default SmallMonthlyCardStats;
