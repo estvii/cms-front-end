@@ -7,7 +7,8 @@ import {
   storeMessage,
   selectClient,
   fetchClientList,
-  fetchServerMessage
+  fetchServerMessage,
+  resetFetchedServerMesssage
 } from "./../../actions";
 
 const snackBarStyle = {
@@ -22,20 +23,36 @@ class MessagesForm extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchServerMessage();
+    const {_id} = this.props.selectedClient;
+    console.log(`reset fetched server message` );
+    this.props.resetFetchedServerMesssage();
+    this.props.fetchServerMessage(_id);
+    console.log(_id);
   }
 
   handleMessagesChange = event => {
     this.setState({ server_messages: event.target.value });
   };
 
+  renderClientServerMessage = () => {
+    return this.props.clientServerMessages.map( message => {
+      return (
+        <SnackbarContent
+          style={snackBarStyle}
+          message={message.server_message}
+          key={message._id}
+        />
+      );
+    })
+  }
+
   addMessages = () => {
-    console.log("here");
     let list = this.state.serverMessagesList;
     list.push(
       <SnackbarContent
         style={snackBarStyle}
         message={this.state.server_messages}
+        key={Math.random()}
       />
     );
     const { _id } = this.props.selectedClient;
@@ -54,8 +71,10 @@ class MessagesForm extends Component {
       <div>
         <div>
           <Paper style={{ maxHeight: 400, overflow: "auto" }}>
+            
             <List>
               <h1>{this.state.serverMessagesList}</h1>
+              {this.renderClientServerMessage()}  
             </List>
           </Paper>
         </div>
@@ -101,11 +120,12 @@ class MessagesForm extends Component {
 const mapStateToProps = state => {
   return {
     selectedClient: state.selectedClient,
-    clientList: Object.values(state.clients)
+    clientList: Object.values(state.clients),
+    clientServerMessages: Object.values(state.clientServerMessages)
   };
 };
 
 export default connect(
   mapStateToProps,
-  { storeMessage, selectClient, fetchClientList, fetchServerMessage }
+  { storeMessage, selectClient, fetchClientList, fetchServerMessage, resetFetchedServerMesssage }
 )(MessagesForm);
