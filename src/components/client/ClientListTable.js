@@ -10,6 +10,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ClientVerification from "./ClientVerification";
+
+// Renders out the table for all clients and their details, e.g. name, account_status etc
 const styles = theme => ({
   root: {
     width: "100%",
@@ -23,10 +25,10 @@ const styles = theme => ({
     margin: theme.spacing.unit
   }
 });
-// pass 2 props down the full list and the filter list if filtered list is empty render client List
+
 function SimpleTable(props) {
   const { classes, clientList } = props;
-  // console.log(props)
+  
   const onSelectClient = client => {
     props.onSelectClient(client);
   };
@@ -55,7 +57,6 @@ function SimpleTable(props) {
     return <div> ON </div>;
   };
   const renderList = () => {
-    // console.log(this.props.clientList);
     return clientList.map(client => {
       return (
         <TableRow key={client._id}>

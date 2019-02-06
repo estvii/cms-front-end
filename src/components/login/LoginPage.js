@@ -17,7 +17,7 @@ class LoginPage extends Component {
 		const { email, password } = this.state;
 
 		axios
-			.post('http://localhost:3000/login', { email, password })
+			.post(`${process.env.REACT_APP_API_URI}/login`, { email, password })
 			.then((response) => {
 				this.props.setAuthToken(response.data);
 				this.props.history.push('/clients');

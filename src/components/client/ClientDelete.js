@@ -6,6 +6,8 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+// opens modal up to delete a client
+
 function getModalStyle() {
   const top = 50
   const left = 50
@@ -83,7 +85,6 @@ SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// We need an intermediary variable for handling the recursive nesting.
 const ClientDeleteModal = withStyles(styles)(SimpleModal);
 
 export default ClientDeleteModal;

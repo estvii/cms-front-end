@@ -12,9 +12,3 @@ ReactDOM.render(
     document.querySelector("#root")
 )
 
-// Wrap 
-//  <Root>
-//      <Router>
-//          <App/>
-//      <Router/>
-//<Root> Memory router? for testing

@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import { Field, reduxForm } from "redux-form";
 import Button from "@material-ui/core/Button";
 
+// Form which renders inside the ClientStatus(parent component)
+// Allows uesr to add additional notes on the client
 class ClientNotesForm extends Component {
   onSubmit = formValues => {
     this.props.onSubmit(formValues);

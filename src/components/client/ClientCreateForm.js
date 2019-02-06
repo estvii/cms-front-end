@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+// General form that is shared with client create and Client Status in order to update information
 class ClientForm extends Component {
 
     onSubmit = (formValues) => {

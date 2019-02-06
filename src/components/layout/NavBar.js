@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import _ from "lodash";
 import { resetSelectedClient, searchClient } from "../../actions";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 
 import {
@@ -54,7 +53,7 @@ class NavBar extends Component {
   renderSelectedClient = () => {
     const client = this.retrieveClient();
     if (!client) {
-      return <div>Please Select Client</div>;
+      return <div></div>;
     }
     return (
       <div>
@@ -92,7 +91,6 @@ class NavBar extends Component {
   };
 
   render() {
-    console.log(this.props.selectedClient);
     const {
       classes,
       location: { pathname }

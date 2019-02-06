@@ -15,8 +15,4 @@ export default combineReducers({
     clientServerMessages: serverMessagesReducer,
     searchClient: searchReducer,
     auth: authReducer
-
-    // test: (state="test", action ) => {
-    //     return state;
-    // }
 })

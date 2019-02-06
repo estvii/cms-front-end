@@ -24,10 +24,8 @@ class MessagesForm extends Component {
 
   componentDidMount() {
     const {_id} = this.props.selectedClient;
-    console.log(`reset fetched server message` );
     this.props.resetFetchedServerMesssage();
     this.props.fetchServerMessage(_id);
-    console.log(_id);
   }
 
   handleMessagesChange = event => {

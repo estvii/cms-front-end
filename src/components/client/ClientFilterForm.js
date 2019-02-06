@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import _ from "lodash";
-
 // React Widgets
 import SelectList from "react-widgets/lib/SelectList";
 import Multiselect from "react-widgets/lib/Multiselect";
 import "react-widgets/dist/css/react-widgets.css";
 
+// Client filter form, below are some sample locations and industry, which a user can select.
+// More options can be added over time
 class ClientFilterForm extends Component {
   onSubmit = filterFormValues => {
     this.props.onSubmit(filterFormValues);
-    // Sends it to ClientFilter for it to send an action
   };
 
   industryList() {
@@ -51,14 +51,8 @@ class ClientFilterForm extends Component {
 
   retrieveClient = () => {
     const { id } = this.props.selectedClient;
-    // console.log(`Retrieved id:${id}`)
     return _.find(this.props.clientList, { id });
   };
-
-  // componentDidMount() {
-  //     const client = this.retrieveClient();
-  //     console.log(client);
-  // }
 
   renderMultiSelect = selectValues => {
     const { input, data, valueField, textField } = selectValues;
@@ -87,10 +81,6 @@ class ClientFilterForm extends Component {
   };
 
   render() {
-    // console.log(this.props);
-
-    // console.log(client);
-    // console.log(this.props)
     const { handleSubmit } = this.props;
     return (
       <div>

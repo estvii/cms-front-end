@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { toggleClientStatus } from "../../actions";
 import Switch from "react-switch";
 
+// Component which uses an npm package switch, based on the state checked would render the switch to be on or
+//off
 class ClientStatusToggle extends Component {
   state = { checked: false };
 

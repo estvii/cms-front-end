@@ -2,27 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchClientList, selectClient } from "../../actions/";
 import "./../../assets/css/client/main.css";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Table from "./ClientListTable";
+
+
+// Fetches all the clients in the redux store, and passes the data to the ClientListTable component
+// for it to render out a list of tables.
+// Also uses allows for clients to be filtered based on the state of search located in the navbar
+
 
 class ClientList extends Component {
   componentDidMount() {
     this.props.fetchClientList();
-    // console.log(this.props.fetchClientList());
   }
 
   onSelectClient = client => {
-    // console.log("here");
     this.props.selectClient(client);
   };
 
   render() {
-    // console.log(this.props.selectedClient);
-    // console.log(this.props.clientList);
     const { clientList, searchClient } = this.props;
-    // console.log(this.props);
-    // console.log(searchClient);
     let filteredClients = clientList.filter(client => {
       if (!searchClient) {
         return clientList;
@@ -32,19 +30,13 @@ class ClientList extends Component {
       );
     });
 
-    // console.log(filteredClients);
-
     return (
-      // <Card>
-      // {/* <CardContent> */}
       <div className="grid-card">
         <Table
           clientList={filteredClients}
           onSelectClient={this.onSelectClient}
         />
       </div>
-      //   {/* </CardContent> */}
-      // {/* </Card> */}
     );
   }
 }

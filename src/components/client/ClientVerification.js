@@ -7,13 +7,9 @@ import Button from '@material-ui/core/Button';
 import ReactCodeInput from 'react-code-input';
 import { connect } from 'react-redux';
 import { pinCodeVerification, toggleClientStatus, resetSelectedClient } from '../../actions';
-// import SnackbarContent from "@material-ui/core/SnackbarContent";
 
-
-// const snackBarStyle = {
-//     backgroundColor: "#c5cae9",
-//     margin: "5vh"
-// };
+// Child component of client list table, component checks whether the pin the user inputs is correct with the backend,
+// if correct the user is able to toggle the switches
 
 function getModalStyle() {
   const top = 50
@@ -102,12 +98,8 @@ class ClientVerificationModal extends Component {
     }
 
   render() {
-    // const { spacing } = this.state;
     const { classes, client } = this.props;
-    // console.log(this.state.pinResponse);
-    // console.log(client);
-    // const { handleSubmit, pristine, submitting }= this.props
-    // console.log(this.state.pinInputCode);
+    
     return (
       <div>
           <Button variant="contained" onClick={this.handleOpen}>
