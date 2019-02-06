@@ -76,7 +76,6 @@ class ClientStatus extends Component {
               <br />
               Email: {client.email}
               <br />
-              Password: {client.password}
               <br />
             </div>
             <div>
