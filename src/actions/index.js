@@ -13,6 +13,7 @@ import { SEARCH_CLIENT } from "./types";
 import { PIN_CODE_VERIFICATION } from "./types";
 import { STORE_SERVER_MESSAGE } from "./types";
 import { FETCH_SERVER_MESSAGES } from "./types";
+import { RESET_FETCHED_SERVER_MESSAGES } from './types';
 
 const CLIENT_STATUS = {
   verification_status: false,
@@ -175,17 +176,23 @@ export const storeMessage = (server_message, _id) => {
 
   const client = _id;
   return async dispatch => {
-    const response = await backEnd.post(`/log/`, { server_message, client });
+    const response = await backEnd.post('/log', { server_message, client });
     console.log(response);
     dispatch({ type: STORE_SERVER_MESSAGE, payload: response.data });
-    history.push("/");
   };
 };
 
-export const fetchServerMessage = () => {
+export const fetchServerMessage = (_id) => {
   return async dispatch => {
-    const response = await backEnd.get(`/log/`);
+    console.log(`fetcherSErver action ${_id}`);
+    const response = await backEnd.get(`/log/${_id}`);
     console.log(response);
     dispatch({ type: FETCH_SERVER_MESSAGES, payload: response.data });
   };
 };
+
+export const resetFetchedServerMesssage = () => {
+  return async dispatch => {
+    dispatch({type: RESET_FETCHED_SERVER_MESSAGES})
+  }
+}
