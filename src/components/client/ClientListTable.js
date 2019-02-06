@@ -10,7 +10,6 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ClientVerification from "./ClientVerification";
-
 const styles = theme => ({
   root: {
     width: "100%",
@@ -18,23 +17,19 @@ const styles = theme => ({
     overflowX: "auto"
   },
   table: {
-    // minWidth: 500, default value is 700
+    minWidth: 600, //default value is 700
   },
   button: {
     margin: theme.spacing.unit
   }
 });
-
 // pass 2 props down the full list and the filter list if filtered list is empty render client List
-
 function SimpleTable(props) {
   const { classes, clientList } = props;
   // console.log(props)
-
   const onSelectClient = client => {
     props.onSelectClient(client);
   };
-
   const renderAccountStatus = clientAccountStatus => {
     if (clientAccountStatus) {
       return <div>ON</div>;
@@ -44,7 +39,6 @@ function SimpleTable(props) {
       return <div>ERROR</div>;
     }
   };
-
   const renderServerStatus = clientServerStatus => {
     if (clientServerStatus) {
       return <div>ON</div>;
@@ -54,14 +48,12 @@ function SimpleTable(props) {
       return <div>ERROR</div>;
     }
   };
-
   const renderVerificationStatus = client => {
     if (!client.verification_status) {
       return <ClientVerification client={client} />;
     }
     return <div> ON </div>;
   };
-
   const renderList = () => {
     // console.log(this.props.clientList);
     return clientList.map(client => {
@@ -89,11 +81,9 @@ function SimpleTable(props) {
       );
     });
   };
-
   return (
-    <Paper className={classes.root} style={{ width: 500 }}>
+    <Paper className={classes.root} style={{ width: 630 }}>
       <Typography variant="h6">Clients</Typography>
-
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -108,9 +98,7 @@ function SimpleTable(props) {
     </Paper>
   );
 }
-
 SimpleTable.propTypes = {
   classes: PropTypes.object.isRequired
 };
-
 export default withStyles(styles)(SimpleTable);

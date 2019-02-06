@@ -21,10 +21,6 @@ const CLIENT_STATUS = {
   server_status: false
 };
 
-// const CLIENT_PREFS = {
-
-// }
-
 export const createClient = formValues => {
   return async dispatch => {
     console.log(formValues);
@@ -85,6 +81,7 @@ export const selectClient = selectedClient => {
 export const resetSelectedClient = () => {
   return async dispatch => {
     dispatch({ type: RESET_SELECTED_CLIENT });
+    history.push('/');
   };
 };
 
@@ -196,3 +193,13 @@ export const resetFetchedServerMesssage = () => {
     dispatch({type: RESET_FETCHED_SERVER_MESSAGES})
   }
 }
+
+export const setAuthToken = (token) => {
+	console.log(token);
+	sessionStorage.setItem('token', token);
+
+	return {
+		type    : 'AUTH_TOKEN',
+		payload : token
+	};
+};
